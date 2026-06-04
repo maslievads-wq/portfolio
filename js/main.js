@@ -229,14 +229,21 @@
     const toggle = $('#navToggle');
     const links = $('#navLinks');
     if (!toggle || !links) return;
-    function close() { links.classList.remove('is-open'); toggle.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); }
-    toggle.addEventListener('click', () => {
-      const open = links.classList.toggle('is-open');
+    function setOpen(open) {
+      links.classList.toggle('is-open', open);
       toggle.classList.toggle('is-open', open);
       toggle.setAttribute('aria-expanded', String(open));
+      document.body.classList.toggle('menu-open', open);
+    }
+    toggle.addEventListener('click', e => { e.stopPropagation(); setOpen(!links.classList.contains('is-open')); });
+    links.addEventListener('click', e => { if (e.target.matches('.nav__link')) setOpen(false); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
+    // tap outside the drawer (on the dimmed backdrop) closes the menu
+    document.addEventListener('click', e => {
+      if (document.body.classList.contains('menu-open') && !links.contains(e.target) && !toggle.contains(e.target)) {
+        setOpen(false);
+      }
     });
-    links.addEventListener('click', e => { if (e.target.matches('.nav__link')) close(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
   }
 
   /* ---------- Active nav per page ---------- */
