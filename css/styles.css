@@ -326,6 +326,28 @@ ul { list-style: none; }
 .skill-card h3 { font-size: 1.18rem; font-weight: 700; margin-bottom: 10px; position: relative; z-index: 1; letter-spacing: -0.01em; }
 .skill-card p { font-size: 0.94rem; color: var(--text-secondary); position: relative; z-index: 1; }
 
+/* ---------------- Competencies ---------------- */
+.competencies { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.competencies--page { margin-top: clamp(40px, 6vw, 64px); }
+.comp-group {
+  padding: 28px 30px; border-radius: var(--radius);
+  background: var(--card); border: 1px solid var(--border);
+  transition: border-color 0.3s, background 0.3s;
+}
+.comp-group:hover { border-color: var(--border-strong); background: var(--card-hover); }
+.comp-group__title { font-size: 1.1rem; font-weight: 700; color: var(--accent); letter-spacing: -0.01em; margin-bottom: 18px; }
+.comp-group__tags { display: flex; flex-wrap: wrap; gap: 9px; }
+.comp-group__tags span {
+  padding: 8px 14px; border-radius: 100px; font-size: 0.84rem; font-weight: 500;
+  background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text-secondary);
+  transition: color 0.25s, border-color 0.25s, background 0.25s;
+}
+.comp-group__tags span:hover { color: var(--accent); border-color: rgba(110, 231, 183, 0.4); background: rgba(110, 231, 183, 0.06); }
+
+@media (max-width: 760px) {
+  .competencies { grid-template-columns: 1fr; }
+}
+
 /* ---------------- About ---------------- */
 .about__grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(40px, 6vw, 80px); align-items: start; }
 .about__text p { margin-bottom: 18px; color: var(--text-secondary); font-size: 1.05rem; }

@@ -109,6 +109,19 @@
     document.title = (c.title || 'Case') + ' — Dmitry Masliev';
   }
 
+  /* ---------- Render competencies ---------- */
+  function renderCompetencies() {
+    const grid = $('#competenciesGrid');
+    if (!grid || typeof COMPETENCIES === 'undefined') return;
+    grid.innerHTML = COMPETENCIES.map((g, gi) => {
+      const tags = g.items.map(it => `<span>${it}</span>`).join('');
+      return `<div class="comp-group reveal" style="--reveal-delay:${(gi % 2) * 80}ms">
+        <h3 class="comp-group__title">${t(g.key)}</h3>
+        <div class="comp-group__tags">${tags}</div>
+      </div>`;
+    }).join('');
+  }
+
   /* ---------- Scroll reveal ---------- */
   let revealObserver = null;
   function initReveal() {
@@ -214,7 +227,7 @@
     currentLang = l;
     try { localStorage.setItem('lang', l); } catch (e) { /* ignore */ }
     applyStaticText();
-    renderSkills(); renderStats(); renderCases(); renderCasePage();
+    renderSkills(); renderStats(); renderCases(); renderCasePage(); renderCompetencies();
     // page already visible: reveal new dynamic cards immediately and run counters
     $$('.reveal').forEach(el => el.classList.add('is-visible'));
     $$('.counter').forEach(animateCounter);
@@ -311,6 +324,7 @@
     renderStats();
     renderCases();
     renderCasePage();
+    renderCompetencies();
     initReveal();
     initCounters();
     initNavScroll();

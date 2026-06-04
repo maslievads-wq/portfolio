@@ -37,3 +37,12 @@ const STAT_META = [
   { text: true },
   { text: true }
 ];
+
+// Core competencies — grouped tag clouds. Items are largely technical/brand
+// terms (language-independent); group titles come from I18N (comp.*).
+const COMPETENCIES = [
+  { key: 'comp.strategy', items: ['Marketing Strategy', 'Brand Strategy & Positioning', 'Go-to-Market Strategy', 'Product Launch', 'Market Expansion', 'P&L Ownership', 'Team Leadership', 'Cross-Functional Collaboration'] },
+  { key: 'comp.growth', items: ['Growth Marketing', 'Performance Marketing', 'Funnel Optimization', 'A/B Testing & Experimentation', 'Retention & Loyalty', 'CAC', 'LTV', 'ROAS', 'ROI', 'Unit-экономика', 'Revenue Growth'] },
+  { key: 'comp.channels', items: ['Paid Social', 'Google Ads', 'Meta Ads', 'SEO', 'Content Marketing', 'SMM', 'Email Marketing', 'CRM', 'Affiliate & Influencer Marketing', 'Amplitude', 'Mixpanel', 'Tableau', 'Jira', 'Figma', 'Miro', 'ChatGPT'] },
+  { key: 'comp.domains', items: ['Fintech', 'BNPL', 'Payments', 'E-commerce', 'Marketplace', 'EdTech', 'Subscription Products', 'B2C', 'SaaS', 'Mobile Apps'] }
+];
