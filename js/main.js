@@ -16,13 +16,15 @@
 
   /* ---------- i18n state ---------- */
   const LANGS = ['en', 'de', 'ru'];
+  // Russian is the primary working language for now. A saved choice still
+  // wins, so the switcher works. Restore browser auto-detect before launch.
+  const DEFAULT_LANG = 'ru';
   function detectLang() {
     try {
       const saved = localStorage.getItem('lang');
       if (saved && LANGS.includes(saved)) return saved;
     } catch (e) { /* ignore */ }
-    const nav = (navigator.language || 'en').slice(0, 2).toLowerCase();
-    return LANGS.includes(nav) ? nav : 'en';
+    return DEFAULT_LANG;
   }
   let currentLang = detectLang();
   const pack = () => I18N[currentLang] || I18N.en;
