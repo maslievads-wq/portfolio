@@ -27,13 +27,3 @@ const STAT_META = [
   { text: true },
   { text: true }
 ];
-
-// Case metrics (numbers) and tools are language-independent; text comes from I18N
-const CASE_META = [
-  { metrics: [{ value: 180, suffix: '%' }, { value: 3, suffix: 'x' }, { value: 34, suffix: '%' }], tools: ['HubSpot', 'Notion', 'Google Analytics', 'Looker Studio', 'Make'] },
-  { metrics: [{ value: 4, suffix: 'x' }, { value: 42, suffix: '%' }, { value: 2.6, suffix: 'x' }], tools: ['Meta Ads', 'Tilda', 'Airtable', 'Zapier', 'GA4'] },
-  { metrics: [{ value: 320, suffix: '%' }, { value: 4.8, suffix: 'x' }, { value: 28, suffix: '%' }], tools: ['GetCourse', 'Google Ads', 'Meta Ads', 'Email Automation'] },
-  { metrics: [{ value: 2.4, suffix: 'x' }, { value: 56, suffix: '%' }, { value: 22, suffix: '%' }], tools: ['Meta Ads', 'Google Ads', 'Shopify', 'GA4', 'Triple Whale'] },
-  { metrics: [{ value: 5, suffix: 'x' }, { value: 38, suffix: '%' }, { value: 31, suffix: '%' }], tools: ['HubSpot', 'Apollo', 'LinkedIn', 'Make', 'Looker Studio'] },
-  { metrics: [{ value: 60, suffix: '%' }, { value: 3, suffix: 'x' }, { value: 45, suffix: '%' }], tools: ['OpenAI API', 'Make', 'n8n', 'Notion', 'Slack'] }
-];

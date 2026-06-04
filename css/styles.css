@@ -401,15 +401,13 @@ ul { list-style: none; }
 }
 .case-card__title { font-size: 1.35rem; font-weight: 700; margin-top: 20px; letter-spacing: -0.01em; position: relative; z-index: 1; }
 .case-card__desc { margin-top: 12px; color: var(--text-secondary); font-size: 0.95rem; position: relative; z-index: 1; }
-.case-card__metrics { margin-top: auto; padding-top: 24px; display: flex; gap: 24px; position: relative; z-index: 1; }
-.case-card__metric strong {
-  display: block; font-size: 1.5rem; font-weight: 800; line-height: 1;
-  background: linear-gradient(110deg, var(--accent), var(--accent-alt));
-  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+.case-card__chips { margin-top: auto; padding-top: 22px; display: flex; flex-wrap: wrap; gap: 8px; position: relative; z-index: 1; }
+.case-card__chip {
+  padding: 6px 12px; border-radius: 100px; font-size: 0.78rem; font-weight: 600;
+  color: var(--accent); background: rgba(110, 231, 183, 0.08); border: 1px solid rgba(110, 231, 183, 0.2);
 }
-.case-card__metric span { font-size: 0.76rem; color: var(--text-secondary); margin-top: 6px; display: block; }
 .case-card__open {
-  margin-top: 22px; display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 18px; display: inline-flex; align-items: center; gap: 8px;
   font-size: 0.86rem; font-weight: 600; color: var(--text-primary); position: relative; z-index: 1;
   transition: gap 0.3s, color 0.3s;
 }
@@ -528,6 +526,16 @@ ul { list-style: none; }
 .modal__block li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
 .modal__tools { display: flex; flex-wrap: wrap; gap: 8px; }
 .modal__tools span { padding: 6px 14px; border-radius: 100px; background: var(--card); border: 1px solid var(--border); font-size: 0.84rem; color: var(--text-secondary); }
+.modal__chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0; }
+.modal__chip {
+  padding: 8px 14px; border-radius: 100px; font-size: 0.82rem; font-weight: 600;
+  color: var(--accent); background: rgba(110, 231, 183, 0.08); border: 1px solid rgba(110, 231, 183, 0.22);
+}
+.modal__summary { margin: 18px 0 4px; font-size: 1.06rem; color: var(--text-primary); }
+.modal__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.modal__next { gap: 10px; }
+.modal__next svg { width: 18px; height: 18px; transition: transform 0.3s var(--ease); }
+.modal__next:hover svg { transform: translateX(4px); }
 
 /* ---------------- Reveal animations ---------------- */
 .reveal { opacity: 0; transform: translateY(34px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); transition-delay: var(--reveal-delay, 0ms); }

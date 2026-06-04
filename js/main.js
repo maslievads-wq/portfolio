@@ -73,17 +73,15 @@
     const grid = $('#casesGrid');
     if (!grid) return;
     const items = pack().cases;
-    const limit = grid.dataset.limit ? parseInt(grid.dataset.limit, 10) : CASE_META.length;
-    grid.innerHTML = CASE_META.slice(0, limit).map((m, i) => {
-      const c = items[i] || {};
-      const metrics = m.metrics.slice(0, 2).map((mm, j) =>
-        `<div class="case-card__metric"><strong>${mm.value}${mm.suffix}</strong><span>${(c.metricLabels || [])[j] || ''}</span></div>`).join('');
+    const limit = grid.dataset.limit ? parseInt(grid.dataset.limit, 10) : items.length;
+    grid.innerHTML = items.slice(0, limit).map((c, i) => {
+      const chips = (c.highlights || []).slice(0, 3).map(h => `<span class="case-card__chip">${h}</span>`).join('');
       return `
         <button class="case-card reveal" style="--reveal-delay:${(i % 3) * 70}ms" data-case="${i}" aria-haspopup="dialog">
           <span class="case-card__tag">${c.tag || ''}</span>
           <h3 class="case-card__title">${c.title || ''}</h3>
-          <p class="case-card__desc">${c.desc || ''}</p>
-          <div class="case-card__metrics">${metrics}</div>
+          <p class="case-card__desc">${c.summary || ''}</p>
+          <div class="case-card__chips">${chips}</div>
           <span class="case-card__open">${t('case.viewStudy')}</span>
         </button>`;
     }).join('');
@@ -213,26 +211,32 @@
     let lastFocused = null;
 
     function open(index) {
-      const m = CASE_META[index];
-      const c = pack().cases[index];
-      if (!m || !c) return;
-      const metrics = m.metrics.map((mm, j) =>
-        `<div class="modal__metric"><strong>${mm.value}${mm.suffix}</strong><span>${(c.metricLabels || [])[j] || ''}</span></div>`).join('');
-      const actions = (c.actions || []).map(a => `<li>${a}</li>`).join('');
-      const tools = m.tools.map(name => `<span>${name}</span>`).join('');
+      const list = pack().cases;
+      const c = list[index];
+      if (!c) return;
+      const chips = (c.highlights || []).map(h => `<span class="modal__chip">${h}</span>`).join('');
+      const bullets = (c.bullets || []).map(b => `<li>${b}</li>`).join('');
+      const next = (index + 1) % list.length;
+      const wa = 'https://wa.me/491622134731?text=' +
+        encodeURIComponent('Hi Dmitry, I saw your case "' + (c.title || '') + '" and would like to connect.');
       body.innerHTML = `
-        <span class="case-tag">${c.tag}</span>
-        <h2 id="modalTitle">${c.title}</h2>
-        <p class="case-meta">${c.industry}</p>
-        <div class="modal__metrics">${metrics}</div>
-        <div class="modal__block"><h4>${t('case.challenge')}</h4><p>${c.challenge}</p></div>
-        <div class="modal__block"><h4>${t('case.actions')}</h4><ul>${actions}</ul></div>
-        <div class="modal__block"><h4>${t('case.tools')}</h4><div class="modal__tools">${tools}</div></div>
-        <div class="modal__block"><h4>${t('case.results')}</h4><p>${c.results}</p></div>`;
+        <span class="case-tag">${c.tag || ''}</span>
+        <h2 id="modalTitle">${c.title || ''}</h2>
+        ${chips ? `<div class="modal__chips">${chips}</div>` : ''}
+        ${c.summary ? `<p class="modal__summary">${c.summary}</p>` : ''}
+        <div class="modal__block"><h4>${t('case.whatDone')}</h4><ul>${bullets}</ul></div>
+        <div class="modal__actions">
+          <a href="${wa}" class="btn btn--primary" target="_blank" rel="noopener noreferrer">${t('case.contact')}</a>
+          <button type="button" class="btn btn--secondary modal__next" data-next="${next}">
+            <span>${t('case.nextCase')}</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>`;
       lastFocused = document.activeElement;
       modal.classList.add('is-open');
       modal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
+      modal.querySelector('.modal__dialog').scrollTop = 0;
       const closeBtn = $('.modal__close', modal);
       if (closeBtn) closeBtn.focus();
     }
@@ -248,7 +252,11 @@
       const card = e.target.closest('[data-case]');
       if (card) open(parseInt(card.dataset.case, 10));
     });
-    modal.addEventListener('click', e => { if (e.target.hasAttribute('data-close')) close(); });
+    modal.addEventListener('click', e => {
+      if (e.target.hasAttribute('data-close')) { close(); return; }
+      const nextBtn = e.target.closest('[data-next]');
+      if (nextBtn) open(parseInt(nextBtn.dataset.next, 10));
+    });
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('is-open')) close(); });
   }
 
