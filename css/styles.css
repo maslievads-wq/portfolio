@@ -243,6 +243,23 @@ ul { list-style: none; }
 .hero__subtitle { margin-top: 28px; font-size: clamp(1.05rem, 1.6vw, 1.3rem); color: var(--text-primary); max-width: 560px; font-weight: 500; }
 .hero__cta { margin-top: 36px; display: flex; gap: 16px; flex-wrap: wrap; }
 
+/* Certification badges (hero) */
+.hero__certs { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 12px; }
+.cert-badge {
+  display: flex; align-items: center; gap: 12px; padding: 10px 16px 10px 12px;
+  border-radius: 100px; border: 1px solid var(--border); background: var(--card);
+  transition: border-color 0.3s, background 0.3s, transform 0.3s;
+}
+.cert-badge:hover { border-color: rgba(110, 231, 183, 0.4); background: var(--card-hover); transform: translateY(-2px); }
+.cert-badge__icon {
+  display: grid; place-items: center; width: 34px; height: 34px; flex-shrink: 0;
+  border-radius: 50%; background: rgba(110, 231, 183, 0.10); color: var(--accent);
+}
+.cert-badge__icon svg { width: 20px; height: 20px; }
+.cert-badge__text { display: flex; flex-direction: column; line-height: 1.25; }
+.cert-badge__text strong { font-size: 0.92rem; font-weight: 700; }
+.cert-badge__text span { font-size: 0.76rem; color: var(--text-secondary); }
+
 /* Portrait */
 .portrait { position: relative; max-width: 440px; margin-inline: auto; }
 .portrait__frame {
@@ -397,6 +414,25 @@ ul { list-style: none; }
   transition: gap 0.3s, color 0.3s;
 }
 .case-card:hover .case-card__open { gap: 14px; color: var(--accent); }
+
+/* Certifications block (About page) */
+.certs { margin-top: clamp(40px, 6vw, 64px); }
+.certs__title { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 22px; }
+.certs__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+.cert-card {
+  display: flex; align-items: center; gap: 18px; padding: 24px 26px;
+  border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg-secondary);
+  transition: border-color 0.3s, transform 0.3s, background 0.3s;
+}
+.cert-card:hover { border-color: rgba(110, 231, 183, 0.4); transform: translateY(-4px); background: var(--card-hover); }
+.cert-card__icon {
+  display: grid; place-items: center; width: 56px; height: 56px; flex-shrink: 0;
+  border-radius: 16px; background: rgba(110, 231, 183, 0.10);
+  border: 1px solid rgba(110, 231, 183, 0.22); color: var(--accent);
+}
+.cert-card__icon svg { width: 30px; height: 30px; }
+.cert-card__text h3 { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em; }
+.cert-card__text p { margin-top: 4px; font-size: 0.9rem; color: var(--text-secondary); }
 
 /* "View all cases" button under the home preview grid */
 .cases__more-wrap { display: flex; justify-content: center; margin-top: clamp(36px, 5vw, 56px); }
