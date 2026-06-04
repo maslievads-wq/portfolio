@@ -143,6 +143,29 @@ ul { list-style: none; }
 }
 .btn--secondary:hover { transform: translateY(-3px); border-color: var(--accent); color: var(--accent); }
 
+/* WhatsApp CTA — brand green with a pulsing ring */
+.btn--whatsapp {
+  background: linear-gradient(135deg, #25D366, #1ebe5d);
+  color: #ffffff;
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.30);
+  position: relative;
+}
+.btn--whatsapp::before {
+  content: ''; position: absolute; inset: 0; border-radius: inherit;
+  box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55);
+  animation: waPulse 2.2s ease-out infinite;
+  pointer-events: none;
+}
+.btn--whatsapp:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(37, 211, 102, 0.46); }
+.btn__wa-icon { width: 20px; height: 20px; flex-shrink: 0; transition: transform 0.4s var(--ease); }
+.btn--whatsapp:hover .btn__wa-icon { transform: rotate(-8deg) scale(1.1); }
+
+@keyframes waPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+  70%  { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
 /* ---------------- Navigation ---------------- */
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 90;
