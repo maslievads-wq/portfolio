@@ -122,6 +122,46 @@
     }).join('');
   }
 
+  /* ---------- Render experience / education / certs / languages ---------- */
+  function renderExperience() {
+    const el = $('#experienceList');
+    if (!el) return;
+    el.innerHTML = (pack().experience || []).map((x, i) => {
+      const bullets = (x.bullets || []).map(b => `<li>${b}</li>`).join('');
+      return `<article class="exp reveal" style="--reveal-delay:${(i % 2) * 70}ms">
+        <div class="exp__head">
+          <h3 class="exp__role">${x.role}<span class="exp__company">${x.company}</span></h3>
+          <span class="exp__period">${x.period}</span>
+        </div>
+        <p class="exp__meta">${x.meta || ''}</p>
+        <ul class="exp__bullets">${bullets}</ul>
+      </article>`;
+    }).join('');
+  }
+
+  function renderEducation() {
+    const el = $('#educationList');
+    if (!el) return;
+    el.innerHTML = (pack().education || []).map(e =>
+      `<div class="edu"><h3 class="edu__degree">${e.degree}</h3><p class="edu__meta">${e.place} · ${e.period}</p></div>`).join('');
+  }
+
+  function renderCertGroups() {
+    const el = $('#certGroups');
+    if (!el) return;
+    el.innerHTML = (pack().certGroups || []).map(g => {
+      const items = g.items.map(it => `<span>${it}</span>`).join('');
+      return `<div class="comp-group"><h3 class="comp-group__title">${g.title}</h3><div class="comp-group__tags">${items}</div></div>`;
+    }).join('');
+  }
+
+  function renderLanguages() {
+    const el = $('#languagesList');
+    if (!el) return;
+    el.innerHTML = (pack().languages || []).map(l =>
+      `<div class="lang-item"><strong>${l.name}</strong><span>${l.level}</span></div>`).join('');
+  }
+
   /* ---------- Scroll reveal ---------- */
   let revealObserver = null;
   function initReveal() {
@@ -228,6 +268,7 @@
     try { localStorage.setItem('lang', l); } catch (e) { /* ignore */ }
     applyStaticText();
     renderSkills(); renderStats(); renderCases(); renderCasePage(); renderCompetencies();
+    renderExperience(); renderEducation(); renderCertGroups(); renderLanguages();
     // page already visible: reveal new dynamic cards immediately and run counters
     $$('.reveal').forEach(el => el.classList.add('is-visible'));
     $$('.counter').forEach(animateCounter);
@@ -325,6 +366,10 @@
     renderCases();
     renderCasePage();
     renderCompetencies();
+    renderExperience();
+    renderEducation();
+    renderCertGroups();
+    renderLanguages();
     initReveal();
     initCounters();
     initNavScroll();

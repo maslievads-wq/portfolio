@@ -50,6 +50,9 @@ const I18N = {
       'comp.growth': 'Growth & Performance',
       'comp.channels': 'Channels & Tools',
       'comp.domains': 'Domains',
+      'about.experienceTitle': 'Experience',
+      'about.educationTitle': 'Education',
+      'about.languagesTitle': 'Languages',
       'cases.eyebrow': 'Selected Work',
       'cases.title': 'Selected Cases',
       'cases.lead': 'A selection of marketing systems and growth initiatives — and the measurable business outcomes they produced.',
@@ -142,6 +145,9 @@ const I18N = {
       'comp.growth': 'Growth & Performance',
       'comp.channels': 'Kanäle & Tools',
       'comp.domains': 'Domänen',
+      'about.experienceTitle': 'Berufserfahrung',
+      'about.educationTitle': 'Ausbildung',
+      'about.languagesTitle': 'Sprachen',
       'cases.eyebrow': 'Ausgewählte Arbeiten',
       'cases.title': 'Ausgewählte Projekte',
       'cases.lead': 'Eine Auswahl an Marketingsystemen und Wachstumsinitiativen – und die messbaren geschäftlichen Ergebnisse, die sie erzielt haben.',
@@ -207,10 +213,10 @@ const I18N = {
       'skills.lead': 'Десять дисциплин, которые превращают маркетинг из статьи расходов в предсказуемый, измеримый двигатель роста.',
       'about.eyebrow': 'Обо мне',
       'about.title': 'Маркетинговый лидер с предпринимательским опытом',
-      'about.p1': 'В последние несколько лет я работал на стыке маркетинга, разработки продукта и роста бизнеса.',
-      'about.p2': 'В отличие от традиционных маркетологов, я понимаю не только то, как генерировать лиды, но и то, как бизнес зарабатывает, масштабирует процессы и выстраивает устойчивые системы роста.',
-      'about.p3': 'Мой опыт сочетает предпринимательство, маркетинговое лидерство и практическую реализацию в разных отраслях, включая digital-услуги, образование, e-commerce и технологические проекты.',
-      'about.p4': 'Я руководил маркетинговыми инициативами, выстраивал системы привлечения, запускал продукты, координировал команды и работал напрямую с владельцами бизнеса ради измеримых результатов.',
+      'about.p1': 'CMO / Head of Marketing с 7+ годами опыта в fintech, e-commerce и EdTech.',
+      'about.p2': 'Выстраивал маркетинговые стратегии и команды с нуля: от brand strategy и go-to-market до P&L ownership и revenue growth.',
+      'about.p3': 'Масштабировал продукты до 500 000+ аудитории и 1M+ MAU, управлял бюджетами до $20 000/мес с фокусом на CAC/LTV и unit-экономику.',
+      'about.p4': 'Веду кросс-функциональные команды до 50 человек, принимаю решения через данные. Использую AI-инструменты для ускорения роста и экспериментов.',
       'about.principlesTitle': 'Мой подход основан на трёх принципах',
       'about.principle1': 'Решения на основе данных',
       'about.principle2': 'Системные процессы роста',
@@ -234,6 +240,9 @@ const I18N = {
       'comp.growth': 'Growth & Performance',
       'comp.channels': 'Каналы и инструменты',
       'comp.domains': 'Домены',
+      'about.experienceTitle': 'Опыт работы',
+      'about.educationTitle': 'Образование',
+      'about.languagesTitle': 'Языки',
       'cases.eyebrow': 'Избранные работы',
       'cases.title': 'Избранные кейсы',
       'cases.lead': 'Подборка маркетинговых систем и инициатив роста — и измеримые бизнес-результаты, которые они принесли.',
@@ -279,11 +288,60 @@ const I18N = {
       { tag: 'EdTech · Мультиканальность', title: 'EdTech-школа с нуля: 80 000 000+ охвата аудитории за 3 года', summary: 'Вывел онлайн-школу с нуля, построив мультиканальную маркетинговую систему на длинной дистанции.', highlights: ['80 000 000+ охват', '5 каналов', '3 года роста'], bullets: ['Выстроил мультиканальную систему: paid, SMM, контент, email, affiliate', 'Связал каналы в единую воронку привлечения и прогрева', 'Суммарный охват аудитории за 3 года — 80 000 000+'] },
       { tag: 'B2B · SaaS · Go-To-Market', title: 'SaaS remboard.ru: выход в точку безубыточности за 3 месяца', summary: 'Реализовал B2B go-to-market стратегию для SaaS-сервиса remboard.ru и быстро вывел продукт в плюс.', highlights: ['Безубыточность за 3 мес', 'CPA + performance', 'B2B SaaS'], bullets: ['Запустил CPA (affiliate) и performance-каналы привлечения', 'Выстроил go-to-market под B2B-специфику продукта', 'Вывел продукт в точку безубыточности за 3 месяца'] },
       { tag: 'Brand · Influence · Performance', title: 'Запуск бренда аксессуаров «Глазурь — Стекло»: 3 000 000+ охвата в месяц', summary: 'Разработал концепцию нового бренда мобильных аксессуаров — от нейминга и brand strategy до performance и influencer-стратегии.', highlights: ['3 000 000+ охват/мес', 'Топовые блогеры', 'Новый бренд'], bullets: ['Создал бренд с нуля: нейминг и brand strategy', 'Запустил performance и influencer-стратегию с топовыми блогерами рынка', 'Вышел на охват 3 000 000+ в месяц'] }
+    ],
+    experience: [
+      {
+        role: 'CMO & Co-Founder', company: '4our — Digital-агентство полного цикла', period: 'фев 2021 — мар 2026',
+        meta: 'Удалённо · 9 человек в прямом подчинении + до 50 подрядчиков · E-commerce · EdTech · Retail',
+        bullets: [
+          'Разработал и реализовал стратегию захвата рынка среди авторизованных сервисных центров Apple — агентство вышло на позицию №1 в СНГ в нише АСЦ через комплексный подход: SEO, performance, контент, SMM.',
+          'Выстроил маркетинговую команду с нуля: 12+ человек (SEO, performance, контент, SMM), настроил процессы и KPI по каждому направлению — NPS клиентов 90, средний LTV контракта 2+ года.',
+          'Построил систему сквозной аналитики: контроль эффективности каждого рекламного канала, регулярная отчётность по ключевым показателям, постоянный поиск точек роста и новых источников трафика.',
+          'Разработал и реализовал маркетинговую стратегию запуска глэмпинга в Крыму (HORECA): с бюджетом $500 через посевы и influencer-маркетинг обеспечил 100% загрузку объекта на 4 месяца вперёд; через год привлёк инвестиции и продал долю для реновации.',
+          'Вывел EdTech онлайн-школу с нуля: выстроил мультиканальную маркетинговую систему (paid, SMM, контент, email, affiliate) — суммарный охват аудитории за 3 года составил 80 000 000+.',
+          'Реализовал B2B go-to-market стратегию для SaaS-сервиса remboard.ru: запустил CPA (affiliate) и performance-каналы, вывел продукт в точку безубыточности за 3 месяца.',
+          'Разработал концепцию нового бренда мобильных аксессуаров «Глазурь — Стекло»: от нейминга и brand strategy до performance и influencer-стратегии с топовыми блогерами рынка — 3 000 000+ охват в месяц.'
+        ]
+      },
+      {
+        role: 'Head of Marketing', company: 're.Cover — розничная сеть мобильной техники', period: 'апр 2019 — фев 2021',
+        meta: 'Повышен за бизнес-результаты · Полная ответственность за маркетинг и P&L',
+        bullets: [
+          'Возглавил маркетинговое направление: выстроил brand strategy, сформировал команду, внедрил систему метрик и отчётности перед собственниками.',
+          'Разработал и запустил подписочную модель: рост LTV клиентов на 40%, снижение CAC — ключевая revenue growth инициатива через изменение продуктового позиционирования.',
+          'Запустил программу лояльности: 15 000+ участников, retention +12%; проектировал механику, A/B-тестировал и итерировал на основе данных.',
+          'Руководил разработкой e-commerce платформы: от стратегии и позиционирования до MVP за 1 месяц и полного запуска за 18 месяцев (Agile/Scrum).',
+          'Вырастил бренд в социальных сетях до 20 000 подписчиков за 12 месяцев через системную контент-стратегию и управление командой (SMM, дизайн, видео).'
+        ]
+      },
+      {
+        role: 'Performance Marketing Manager', company: 're.Cover — розничная сеть мобильной техники', period: 'мар 2018 — мар 2019',
+        meta: 'Запуск performance-направления с нуля',
+        bullets: [
+          'Запустил Google Ads и Meta Ads с нуля: конверсия e-commerce выросла с 0,8% до 2% за год, ROI ×10 в первом цикле кампаний.',
+          'Выстроил систему сквозной аналитики и атрибуции; контролировал эффективность каждого канала и регулярно отчитывался по ключевым показателям перед руководством.'
+        ]
+      }
+    ],
+    education: [
+      { degree: 'Бакалавр, Маркетинг', place: 'Южный федеральный университет, экономический факультет', period: '2014–2018' }
+    ],
+    certGroups: [
+      { title: 'Product & Marketing Management', items: ['Pragmatic Institute Certification', 'Certified Scrum Product Owner (CSPO)', 'Google Project Management Certificate', 'AIPMM Certified Product Manager'] },
+      { title: 'Performance Marketing', items: ['Google Ads', 'Meta Blueprint', 'Яндекс.Директ'] }
+    ],
+    languages: [
+      { name: 'Русский', level: 'родной' },
+      { name: 'Украинский', level: 'родной' },
+      { name: 'Английский', level: 'C1' },
+      { name: 'Немецкий', level: 'B2' }
     ]
   }
 };
 
-/* During the Russian-first phase the cases are authored in Russian only.
-   EN/DE reuse the same content until properly translated on request. */
-I18N.en.cases = I18N.ru.cases;
-I18N.de.cases = I18N.ru.cases;
+/* Russian-first phase: EN/DE reuse the Russian content for these
+   resume-style sections until properly translated on request. */
+['cases', 'experience', 'education', 'certGroups', 'languages'].forEach(k => {
+  I18N.en[k] = I18N.ru[k];
+  I18N.de[k] = I18N.ru[k];
+});

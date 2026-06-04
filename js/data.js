@@ -32,7 +32,7 @@ const CASE_SLUGS = [
 
 // Stats: numeric ones animate from STAT_META; text ones take their value from I18N
 const STAT_META = [
-  { value: 6,   suffix: '+' },
+  { value: 7,   suffix: '+' },
   { value: 100, suffix: '+' },
   { text: true },
   { text: true }
