@@ -438,6 +438,30 @@ ul { list-style: none; }
 .cases__more-arrow { width: 20px; height: 20px; transition: transform 0.3s var(--ease); }
 .cases__more:hover .cases__more-arrow { transform: translateX(5px); }
 
+/* ---------------- Case page (own URL) ---------------- */
+.case-page { max-width: 820px; margin: 0 auto; }
+.case-page__back {
+  display: inline-flex; align-items: center; gap: 8px; margin-bottom: 30px;
+  font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); transition: color 0.3s, gap 0.3s;
+}
+.case-page__back:hover { color: var(--accent); gap: 12px; }
+.case-page__tag {
+  display: inline-block; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent); padding: 7px 14px; border-radius: 100px; margin-bottom: 22px;
+  background: rgba(110, 231, 183, 0.08); border: 1px solid rgba(110, 231, 183, 0.2);
+}
+.case-page__title { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.08; letter-spacing: -0.02em; }
+.case-page__chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0; }
+.case-page__summary { font-size: clamp(1.1rem, 2vw, 1.3rem); color: var(--text-primary); max-width: 68ch; font-weight: 500; }
+.case-page__what { margin-top: 44px; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 18px; }
+.case-page__bullets { display: flex; flex-direction: column; gap: 16px; max-width: 74ch; }
+.case-page__bullets li { position: relative; padding-left: 30px; color: var(--text-secondary); font-size: 1.04rem; }
+.case-page__bullets li::before { content: '→'; position: absolute; left: 0; top: 1px; color: var(--accent); font-weight: 700; }
+.case-page__actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 48px; padding-top: 36px; border-top: 1px solid var(--border); }
+.case-page__next { gap: 10px; }
+.case-page__next svg { width: 18px; height: 18px; transition: transform 0.3s var(--ease); }
+.case-page__next:hover svg { transform: translateX(4px); }
+
 /* ---------------- Contact ---------------- */
 .contact__inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: start; }
 .contact__links { margin-top: 36px; display: flex; flex-direction: column; gap: 4px; }

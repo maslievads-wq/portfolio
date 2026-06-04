@@ -20,6 +20,16 @@ const ICONS = {
 // Skill icons in display order (titles + descriptions come from I18N)
 const SKILL_ICONS = ['strategy', 'performance', 'growth', 'analytics', 'team', 'product', 'gtm', 'lead', 'crm', 'ai'];
 
+// Each case has its own page (SEO). Slugs are language-independent and map
+// 1:1 (by index) to the cases array in i18n.js.
+const CASE_SLUGS = [
+  'case-apple-service-centers.html',
+  'case-glamping-crimea.html',
+  'case-edtech-school.html',
+  'case-remboard-saas.html',
+  'case-glazur-brand.html'
+];
+
 // Stats: numeric ones animate from STAT_META; text ones take their value from I18N
 const STAT_META = [
   { value: 6,   suffix: '+' },

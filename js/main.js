@@ -76,15 +76,37 @@
     const limit = grid.dataset.limit ? parseInt(grid.dataset.limit, 10) : items.length;
     grid.innerHTML = items.slice(0, limit).map((c, i) => {
       const chips = (c.highlights || []).slice(0, 3).map(h => `<span class="case-card__chip">${h}</span>`).join('');
+      const href = (typeof CASE_SLUGS !== 'undefined' && CASE_SLUGS[i]) || '#';
       return `
-        <button class="case-card reveal" style="--reveal-delay:${(i % 3) * 70}ms" data-case="${i}" aria-haspopup="dialog">
+        <a class="case-card reveal" style="--reveal-delay:${(i % 3) * 70}ms" href="${href}">
           <span class="case-card__tag">${c.tag || ''}</span>
           <h3 class="case-card__title">${c.title || ''}</h3>
           <p class="case-card__desc">${c.summary || ''}</p>
           <div class="case-card__chips">${chips}</div>
           <span class="case-card__open">${t('case.viewStudy')}</span>
-        </button>`;
+        </a>`;
     }).join('');
+  }
+
+  /* ---------- Case page (own URL, SEO) ---------- */
+  function renderCasePage() {
+    const root = document.querySelector('[data-case-index]');
+    if (!root) return;
+    const idx = parseInt(root.getAttribute('data-case-index'), 10);
+    const c = pack().cases[idx];
+    if (!c) return;
+    const setText = (field, val) => { const el = root.querySelector(`[data-case-field="${field}"]`); if (el) el.textContent = val; };
+    setText('tag', c.tag || '');
+    setText('title', c.title || '');
+    setText('summary', c.summary || '');
+    const chips = root.querySelector('[data-case-field="chips"]');
+    if (chips) chips.innerHTML = (c.highlights || []).map(h => `<span class="case-card__chip">${h}</span>`).join('');
+    const bullets = root.querySelector('[data-case-field="bullets"]');
+    if (bullets) bullets.innerHTML = (c.bullets || []).map(b => `<li>${b}</li>`).join('');
+    const contact = root.querySelector('[data-case-field="contactLink"]');
+    if (contact) contact.href = 'https://wa.me/491622134731?text=' +
+      encodeURIComponent('Hi Dmitry, I saw your case "' + (c.title || '') + '" and would like to connect.');
+    document.title = (c.title || 'Case') + ' — Dmitry Masliev';
   }
 
   /* ---------- Scroll reveal ---------- */
@@ -170,6 +192,7 @@
     if (!links.length) return;
     let here = window.location.pathname.split('/').pop() || 'index.html';
     if (here === '') here = 'index.html';
+    if (here.startsWith('case-')) here = 'cases.html'; // case detail pages -> Cases
     links.forEach(l => {
       const target = (l.getAttribute('href') || '').split('/').pop();
       const match = target === here || (here === 'index.html' && (target === '' || target === 'index.html'));
@@ -191,7 +214,7 @@
     currentLang = l;
     try { localStorage.setItem('lang', l); } catch (e) { /* ignore */ }
     applyStaticText();
-    renderSkills(); renderStats(); renderCases();
+    renderSkills(); renderStats(); renderCases(); renderCasePage();
     // page already visible: reveal new dynamic cards immediately and run counters
     $$('.reveal').forEach(el => el.classList.add('is-visible'));
     $$('.counter').forEach(animateCounter);
@@ -203,63 +226,6 @@
   }
 
   /* ---------- Case modal ---------- */
-  function initModal() {
-    const modal = $('#caseModal');
-    const body = $('#modalBody');
-    const grid = $('#casesGrid');
-    if (!modal || !body || !grid) return;
-    let lastFocused = null;
-
-    function open(index) {
-      const list = pack().cases;
-      const c = list[index];
-      if (!c) return;
-      const chips = (c.highlights || []).map(h => `<span class="modal__chip">${h}</span>`).join('');
-      const bullets = (c.bullets || []).map(b => `<li>${b}</li>`).join('');
-      const next = (index + 1) % list.length;
-      const wa = 'https://wa.me/491622134731?text=' +
-        encodeURIComponent('Hi Dmitry, I saw your case "' + (c.title || '') + '" and would like to connect.');
-      body.innerHTML = `
-        <span class="case-tag">${c.tag || ''}</span>
-        <h2 id="modalTitle">${c.title || ''}</h2>
-        ${chips ? `<div class="modal__chips">${chips}</div>` : ''}
-        ${c.summary ? `<p class="modal__summary">${c.summary}</p>` : ''}
-        <div class="modal__block"><h4>${t('case.whatDone')}</h4><ul>${bullets}</ul></div>
-        <div class="modal__actions">
-          <a href="${wa}" class="btn btn--primary" target="_blank" rel="noopener noreferrer">${t('case.contact')}</a>
-          <button type="button" class="btn btn--secondary modal__next" data-next="${next}">
-            <span>${t('case.nextCase')}</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
-          </button>
-        </div>`;
-      lastFocused = document.activeElement;
-      modal.classList.add('is-open');
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      modal.querySelector('.modal__dialog').scrollTop = 0;
-      const closeBtn = $('.modal__close', modal);
-      if (closeBtn) closeBtn.focus();
-    }
-
-    function close() {
-      modal.classList.remove('is-open');
-      modal.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-      if (lastFocused) lastFocused.focus();
-    }
-
-    grid.addEventListener('click', e => {
-      const card = e.target.closest('[data-case]');
-      if (card) open(parseInt(card.dataset.case, 10));
-    });
-    modal.addEventListener('click', e => {
-      if (e.target.hasAttribute('data-close')) { close(); return; }
-      const nextBtn = e.target.closest('[data-next]');
-      if (nextBtn) open(parseInt(nextBtn.dataset.next, 10));
-    });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('is-open')) close(); });
-  }
-
   /* ---------- Contact form ---------- */
   function initForm() {
     const form = $('#contactForm');
@@ -344,13 +310,13 @@
     renderSkills();
     renderStats();
     renderCases();
+    renderCasePage();
     initReveal();
     initCounters();
     initNavScroll();
     initMobileMenu();
     initActiveNav();
     initLangSwitcher();
-    initModal();
     initForm();
     initParticles();
   }
