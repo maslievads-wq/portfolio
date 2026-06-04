@@ -460,9 +460,15 @@ ul { list-style: none; }
 
 /* ---------------- Responsive ---------------- */
 @media (max-width: 900px) {
-  .hero__inner { grid-template-columns: 1fr; gap: 56px; }
-  .hero__portrait { order: -1; }
-  .portrait { max-width: 340px; }
+  .hero { padding-top: 110px; }
+  .hero__inner { grid-template-columns: 1fr; gap: 40px; }
+  /* mobile flow: text → buttons → photo (natural DOM order) */
+  .hero__content { order: 1; }
+  .hero__portrait { order: 2; }
+  /* photo slides up into place after the text has appeared */
+  .hero__portrait.reveal { transition-delay: 420ms; transform: translateY(80px) scale(0.96); }
+  .hero__portrait.reveal.is-visible { transform: none; }
+  .portrait { max-width: 300px; }
   .about__grid, .contact__inner { grid-template-columns: 1fr; }
   .hero__scroll { display: none; }
 
