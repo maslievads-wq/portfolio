@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0B0B0B" />
+
+  <title>Cases — Dmitry Masliev | Selected Marketing & Growth Cases</title>
+  <meta name="description" content="Selected cases by Dmitry Masliev — marketing systems and growth initiatives with measurable business outcomes across agency growth, recruitment, education, e-commerce, lead generation and AI automation." />
+  <meta name="author" content="Dmitry Masliev" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Cases — Dmitry Masliev | Selected Marketing & Growth Cases" />
+  <meta property="og:description" content="Marketing systems and growth initiatives — and the measurable business outcomes they produced." />
+
+  <link rel="canonical" href="https://dmitrymasliev.com/cases.html" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="bg-fx" aria-hidden="true">
+    <div class="bg-gradient"></div>
+    <canvas id="particles"></canvas>
+  </div>
+
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__brand" aria-label="Dmitry Masliev — home">
+        <span class="nav__brand-mark">DM</span>
+        <span class="nav__brand-text">Dmitry Masliev</span>
+      </a>
+
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="skills.html" class="nav__link">Skills</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="cases.html" class="nav__link">Cases</a>
+        <a href="contact.html" class="nav__link nav__link--cta">Contact</a>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== CASES ===================== -->
+    <section class="cases section section--page" id="cases">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="eyebrow">Selected Work</span>
+          <h1 class="section__title">Selected Cases</h1>
+          <p class="section__lead">
+            A selection of marketing systems and growth initiatives — and the measurable
+            business outcomes they produced.
+          </p>
+        </div>
+
+        <div class="cases__grid" id="casesGrid"><!-- cards injected by JS --></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="nav__brand-mark">DM</span>
+        <p>Building marketing systems that drive measurable business growth.</p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer">
+        <a href="index.html">Home</a>
+        <a href="skills.html">Skills</a>
+        <a href="about.html">About</a>
+        <a href="cases.html">Cases</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://t.me/" target="_blank" rel="noopener noreferrer">Telegram</a>
+      </nav>
+    </div>
+    <div class="container footer__bottom">
+      <p>© 2026 Dmitry Masliev. All Rights Reserved.</p>
+      <a href="#" class="footer__top" aria-label="Back to top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- ===================== CASE MODAL ===================== -->
+  <div class="modal" id="caseModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal__overlay" data-close></div>
+    <div class="modal__dialog" role="document">
+      <button class="modal__close" data-close aria-label="Close case study">&times;</button>
+      <div class="modal__body" id="modalBody"><!-- injected by JS --></div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

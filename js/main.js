@@ -129,22 +129,19 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
   }
 
-  /* ---------- Scrollspy ---------- */
-  function initScrollSpy() {
-    const sections = $$('main section[id]');
+  /* ---------- Active nav per page ---------- */
+  // Multi-page site: highlight the link matching the current document.
+  function initActiveNav() {
     const links = $$('.nav__link');
-    if (!sections.length || !('IntersectionObserver' in window)) return;
-    const map = {};
-    links.forEach(l => { map[l.getAttribute('href').slice(1)] = l; });
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          links.forEach(l => l.classList.remove('is-active'));
-          if (map[e.target.id]) map[e.target.id].classList.add('is-active');
-        }
-      });
-    }, { threshold: 0.5, rootMargin: '-20% 0px -40% 0px' });
-    sections.forEach(s => io.observe(s));
+    if (!links.length) return;
+    let here = window.location.pathname.split('/').pop() || 'index.html';
+    if (here === '') here = 'index.html';
+    links.forEach(l => {
+      const target = (l.getAttribute('href') || '').split('/').pop();
+      const match = target === here || (here === 'index.html' && (target === '' || target === 'index.html'));
+      l.classList.toggle('is-active', match);
+      if (match) l.setAttribute('aria-current', 'page');
+    });
   }
 
   /* ---------- Case modal ---------- */
@@ -295,7 +292,7 @@
     initCounters();
     initNavScroll();
     initMobileMenu();
-    initScrollSpy();
+    initActiveNav();
     initModal();
     initForm();
     initParticles();

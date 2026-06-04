@@ -18,8 +18,12 @@ Positioned for B2B marketing-consulting clients and CMO / Marketing Director / G
 
 ```
 portfolio/
-├── index.html          # Markup for all sections
-├── css/styles.css      # Design system + all styles
+├── index.html          # Home (hero)
+├── skills.html         # Core Expertise
+├── about.html          # About Me
+├── cases.html          # Selected Cases (+ case modal)
+├── contact.html        # Contact form + links
+├── css/styles.css      # Design system + all styles (shared)
 ├── js/
 │   ├── data.js         # Content: skills, stats, cases, icons
 │   └── main.js         # Interactivity (reveals, counters, modal, form, particles)
@@ -29,12 +33,17 @@ portfolio/
 └── README.md
 ```
 
-### Sections
-1. **Home** — two-column hero with headline, offer, CTAs and portrait
-2. **Skills** — 10-card "Core Expertise" grid
-3. **About** — narrative, animated statistics, core strengths, personal statement
-4. **Cases** — selected case studies, each opening a detailed modal
-5. **Contact** — form + contact links (LinkedIn, Telegram, Email, Location)
+### Pages (separate URLs, shared header/footer)
+1. **Home** (`index.html`) — two-column hero with headline, offer, CTAs and portrait
+2. **Skills** (`skills.html`) — 10-card "Core Expertise" grid
+3. **About** (`about.html`) — narrative, animated statistics, core strengths, personal statement
+4. **Cases** (`cases.html`) — selected case studies, each opening a detailed modal
+5. **Contact** (`contact.html`) — form + contact links (LinkedIn, Telegram, Email, Location)
+
+The navigation links to real pages (not in-page anchors); the active page is
+highlighted automatically based on the current URL. `js/main.js` renders the
+page-specific content and silently no-ops for sections not present on a page,
+so all pages share one script and one stylesheet.
 
 ## 🎨 Design system
 
