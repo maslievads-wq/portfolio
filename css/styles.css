@@ -326,6 +326,17 @@ ul { list-style: none; }
 .skill-card h3 { font-size: 1.18rem; font-weight: 700; margin-bottom: 10px; position: relative; z-index: 1; letter-spacing: -0.01em; }
 .skill-card p { font-size: 0.94rem; color: var(--text-secondary); position: relative; z-index: 1; }
 
+/* ---------------- In-page CTA (Skills / About) ---------------- */
+.page-cta {
+  display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;
+  margin-top: clamp(48px, 7vw, 80px); padding-top: clamp(40px, 5vw, 56px);
+  border-top: 1px solid var(--border);
+}
+@media (max-width: 560px) {
+  .page-cta { flex-direction: column; align-items: stretch; }
+  .page-cta .btn { width: 100%; }
+}
+
 /* ---------------- Competencies ---------------- */
 .competencies { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
 .competencies--page { margin-top: clamp(40px, 6vw, 64px); }
