@@ -73,7 +73,8 @@
     const grid = $('#casesGrid');
     if (!grid) return;
     const items = pack().cases;
-    grid.innerHTML = CASE_META.map((m, i) => {
+    const limit = grid.dataset.limit ? parseInt(grid.dataset.limit, 10) : CASE_META.length;
+    grid.innerHTML = CASE_META.slice(0, limit).map((m, i) => {
       const c = items[i] || {};
       const metrics = m.metrics.slice(0, 2).map((mm, j) =>
         `<div class="case-card__metric"><strong>${mm.value}${mm.suffix}</strong><span>${(c.metricLabels || [])[j] || ''}</span></div>`).join('');

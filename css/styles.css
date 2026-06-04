@@ -398,6 +398,12 @@ ul { list-style: none; }
 }
 .case-card:hover .case-card__open { gap: 14px; color: var(--accent); }
 
+/* "View all cases" button under the home preview grid */
+.cases__more-wrap { display: flex; justify-content: center; margin-top: clamp(36px, 5vw, 56px); }
+.cases__more { gap: 10px; }
+.cases__more-arrow { width: 20px; height: 20px; transition: transform 0.3s var(--ease); }
+.cases__more:hover .cases__more-arrow { transform: translateX(5px); }
+
 /* ---------------- Contact ---------------- */
 .contact__inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: start; }
 .contact__links { margin-top: 36px; display: flex; flex-direction: column; gap: 4px; }

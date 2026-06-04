@@ -123,6 +123,31 @@
         <span></span>
       </a>
     </section>
+
+    <!-- ===================== CASES PREVIEW ===================== -->
+    <section class="cases section" id="cases">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="eyebrow" data-i18n="cases.eyebrow">Selected Work</span>
+          <h2 class="section__title" data-i18n="cases.title">Selected Cases</h2>
+          <p class="section__lead" data-i18n="cases.lead">
+            A selection of marketing systems and growth initiatives — and the measurable
+            business outcomes they produced.
+          </p>
+        </div>
+
+        <div class="cases__grid" id="casesGrid" data-limit="3"><!-- 3 cards injected by JS --></div>
+
+        <div class="cases__more-wrap reveal">
+          <a href="cases.html" class="btn btn--secondary cases__more">
+            <span data-i18n="cases.viewAll">View all cases</span>
+            <svg class="cases__more-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14"/><path d="M13 6l6 6-6 6"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- ===================== FOOTER ===================== -->
@@ -148,6 +173,15 @@
       <a href="#" class="footer__top" data-i18n="footer.backToTop" aria-label="Back to top">Back to top ↑</a>
     </div>
   </footer>
+
+  <!-- ===================== CASE MODAL ===================== -->
+  <div class="modal" id="caseModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal__overlay" data-close></div>
+    <div class="modal__dialog" role="document">
+      <button class="modal__close" data-close aria-label="Close case study">&times;</button>
+      <div class="modal__body" id="modalBody"><!-- injected by JS --></div>
+    </div>
+  </div>
 
   <script src="js/i18n.js"></script>
   <script src="js/data.js"></script>
