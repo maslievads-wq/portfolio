@@ -447,6 +447,7 @@ ul { list-style: none; }
 .case-card:hover .case-card__open { gap: 14px; color: var(--accent); }
 
 /* Resume sections (About page): experience, education, languages */
+.about__intro { max-width: 760px; }
 .about__block { margin-top: clamp(48px, 7vw, 80px); }
 .about__block-title { font-size: clamp(1.5rem, 3.4vw, 2.1rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 26px; }
 
