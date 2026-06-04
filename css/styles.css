@@ -332,10 +332,15 @@ ul { list-style: none; }
   margin-top: clamp(48px, 7vw, 80px); padding-top: clamp(40px, 5vw, 56px);
   border-top: 1px solid var(--border);
 }
+.page-cta--start { justify-content: flex-start; border-top: none; padding-top: 0; margin-top: 32px; }
 @media (max-width: 560px) {
   .page-cta { flex-direction: column; align-items: stretch; }
   .page-cta .btn { width: 100%; }
 }
+
+/* Two-column contact links (home contact block) */
+.contact__links--grid { display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 48px; margin-top: 0; }
+@media (max-width: 680px) { .contact__links--grid { grid-template-columns: 1fr; } }
 
 /* ---------------- Competencies ---------------- */
 .competencies { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }

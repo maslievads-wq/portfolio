@@ -59,7 +59,7 @@ const footer = `
         <a href="about.html" data-i18n="nav.about">About</a>
         <a href="cases.html" data-i18n="nav.cases">Cases</a>
         <a href="contact.html" data-i18n="nav.contact">Contact</a>
-        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/masliev/?locale=ru" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="https://t.me/" target="_blank" rel="noopener noreferrer">Telegram</a>
       </nav>
     </div>
