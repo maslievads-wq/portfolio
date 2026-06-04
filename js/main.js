@@ -1,9 +1,10 @@
 /* ============================================================
-   Main interactivity
-   - render skills / stats / cases
+   Main interactivity + i18n
+   - language switching (en / de / ru), persisted in localStorage
+   - render skills / stats / cases from META + active language
    - scroll reveal, animated counters
-   - sticky nav, mobile menu, scrollspy
-   - case modal, contact form, particle background
+   - sticky nav, mobile menu, active link, case modal, contact form
+   - particle background
    ============================================================ */
 
 (function () {
@@ -13,27 +14,55 @@
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
+  /* ---------- i18n state ---------- */
+  const LANGS = ['en', 'de', 'ru'];
+  function detectLang() {
+    try {
+      const saved = localStorage.getItem('lang');
+      if (saved && LANGS.includes(saved)) return saved;
+    } catch (e) { /* ignore */ }
+    const nav = (navigator.language || 'en').slice(0, 2).toLowerCase();
+    return LANGS.includes(nav) ? nav : 'en';
+  }
+  let currentLang = detectLang();
+  const pack = () => I18N[currentLang] || I18N.en;
+  const t = key => (pack().ui[key] != null ? pack().ui[key] : (I18N.en.ui[key] != null ? I18N.en.ui[key] : key));
+
+  /* ---------- Static text ---------- */
+  function applyStaticText() {
+    document.documentElement.lang = currentLang;
+    $$('[data-i18n]').forEach(el => {
+      const val = t(el.getAttribute('data-i18n'));
+      if (val != null) el.textContent = val;
+    });
+  }
+
   /* ---------- Render skills ---------- */
   function renderSkills() {
     const grid = $('#skillsGrid');
     if (!grid) return;
-    grid.innerHTML = SKILLS.map((s, i) => `
-      <article class="skill-card reveal" style="--reveal-delay:${(i % 3) * 70}ms">
-        <div class="skill-card__icon">${ICONS[s.icon] || ''}</div>
-        <h3>${s.title}</h3>
-        <p>${s.desc}</p>
-      </article>`).join('');
+    const items = pack().skills;
+    grid.innerHTML = SKILL_ICONS.map((icon, i) => {
+      const s = items[i] || {};
+      return `<article class="skill-card reveal" style="--reveal-delay:${(i % 3) * 70}ms">
+        <div class="skill-card__icon">${ICONS[icon] || ''}</div>
+        <h3>${s.t || ''}</h3>
+        <p>${s.d || ''}</p>
+      </article>`;
+    }).join('');
   }
 
   /* ---------- Render stats ---------- */
   function renderStats() {
     const grid = $('#statsGrid');
     if (!grid) return;
-    grid.innerHTML = STATS.map(st => {
-      const display = st.text
-        ? st.text
-        : `<span class="counter" data-target="${st.value}" data-suffix="${st.suffix || ''}">0${st.suffix || ''}</span>`;
-      return `<div class="stat"><div class="stat__num">${display}</div><div class="stat__label">${st.label}</div></div>`;
+    const labels = pack().stats;
+    grid.innerHTML = STAT_META.map((m, i) => {
+      const s = labels[i] || {};
+      const display = m.text
+        ? (s.value || '')
+        : `<span class="counter" data-target="${m.value}" data-suffix="${m.suffix || ''}">0${m.suffix || ''}</span>`;
+      return `<div class="stat"><div class="stat__num">${display}</div><div class="stat__label">${s.label || ''}</div></div>`;
     }).join('');
   }
 
@@ -41,33 +70,38 @@
   function renderCases() {
     const grid = $('#casesGrid');
     if (!grid) return;
-    grid.innerHTML = CASES.map((c, i) => {
-      const metrics = c.metrics.slice(0, 2).map(m =>
-        `<div class="case-card__metric"><strong>${m.value}${m.suffix}</strong><span>${m.label}</span></div>`).join('');
+    const items = pack().cases;
+    grid.innerHTML = CASE_META.map((m, i) => {
+      const c = items[i] || {};
+      const metrics = m.metrics.slice(0, 2).map((mm, j) =>
+        `<div class="case-card__metric"><strong>${mm.value}${mm.suffix}</strong><span>${(c.metricLabels || [])[j] || ''}</span></div>`).join('');
       return `
         <button class="case-card reveal" style="--reveal-delay:${(i % 3) * 70}ms" data-case="${i}" aria-haspopup="dialog">
-          <span class="case-card__tag">${c.tag}</span>
-          <h3 class="case-card__title">${c.title}</h3>
-          <p class="case-card__desc">${c.desc}</p>
+          <span class="case-card__tag">${c.tag || ''}</span>
+          <h3 class="case-card__title">${c.title || ''}</h3>
+          <p class="case-card__desc">${c.desc || ''}</p>
           <div class="case-card__metrics">${metrics}</div>
-          <span class="case-card__open">View case study →</span>
+          <span class="case-card__open">${t('case.viewStudy')}</span>
         </button>`;
     }).join('');
   }
 
   /* ---------- Scroll reveal ---------- */
+  let revealObserver = null;
   function initReveal() {
     const els = $$('.reveal');
     if (prefersReduced || !('IntersectionObserver' in window)) {
       els.forEach(el => el.classList.add('is-visible'));
       return;
     }
-    const io = new IntersectionObserver((entries, obs) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-    els.forEach(el => io.observe(el));
+    if (!revealObserver) {
+      revealObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    }
+    els.forEach(el => { if (!el.classList.contains('is-visible')) revealObserver.observe(el); });
   }
 
   /* ---------- Animated counters ---------- */
@@ -104,7 +138,7 @@
     const progress = $('#scrollProgress');
     function onScroll() {
       const y = window.scrollY;
-      nav.classList.toggle('is-scrolled', y > 30);
+      if (nav) nav.classList.toggle('is-scrolled', y > 30);
       if (progress) {
         const h = document.documentElement.scrollHeight - window.innerHeight;
         progress.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
@@ -130,7 +164,6 @@
   }
 
   /* ---------- Active nav per page ---------- */
-  // Multi-page site: highlight the link matching the current document.
   function initActiveNav() {
     const links = $$('.nav__link');
     if (!links.length) return;
@@ -144,6 +177,30 @@
     });
   }
 
+  /* ---------- Language switcher ---------- */
+  function updateLangSwitcher() {
+    $$('.lang__btn').forEach(b => {
+      const on = b.dataset.lang === currentLang;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-pressed', String(on));
+    });
+  }
+  function setLang(l) {
+    if (!LANGS.includes(l) || l === currentLang) { updateLangSwitcher(); return; }
+    currentLang = l;
+    try { localStorage.setItem('lang', l); } catch (e) { /* ignore */ }
+    applyStaticText();
+    renderSkills(); renderStats(); renderCases();
+    // page already visible: reveal new dynamic cards immediately and run counters
+    $$('.reveal').forEach(el => el.classList.add('is-visible'));
+    $$('.counter').forEach(animateCounter);
+    updateLangSwitcher();
+  }
+  function initLangSwitcher() {
+    $$('.lang__btn').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+    updateLangSwitcher();
+  }
+
   /* ---------- Case modal ---------- */
   function initModal() {
     const modal = $('#caseModal');
@@ -153,21 +210,22 @@
     let lastFocused = null;
 
     function open(index) {
-      const c = CASES[index];
-      if (!c) return;
-      const metrics = c.metrics.map(m =>
-        `<div class="modal__metric"><strong>${m.value}${m.suffix}</strong><span>${m.label}</span></div>`).join('');
-      const actions = c.actions.map(a => `<li>${a}</li>`).join('');
-      const tools = c.tools.map(t => `<span>${t}</span>`).join('');
+      const m = CASE_META[index];
+      const c = pack().cases[index];
+      if (!m || !c) return;
+      const metrics = m.metrics.map((mm, j) =>
+        `<div class="modal__metric"><strong>${mm.value}${mm.suffix}</strong><span>${(c.metricLabels || [])[j] || ''}</span></div>`).join('');
+      const actions = (c.actions || []).map(a => `<li>${a}</li>`).join('');
+      const tools = m.tools.map(name => `<span>${name}</span>`).join('');
       body.innerHTML = `
         <span class="case-tag">${c.tag}</span>
         <h2 id="modalTitle">${c.title}</h2>
         <p class="case-meta">${c.industry}</p>
         <div class="modal__metrics">${metrics}</div>
-        <div class="modal__block"><h4>Challenge</h4><p>${c.challenge}</p></div>
-        <div class="modal__block"><h4>Actions Taken</h4><ul>${actions}</ul></div>
-        <div class="modal__block"><h4>Tools Used</h4><div class="modal__tools">${tools}</div></div>
-        <div class="modal__block"><h4>Results</h4><p>${c.results}</p></div>`;
+        <div class="modal__block"><h4>${t('case.challenge')}</h4><p>${c.challenge}</p></div>
+        <div class="modal__block"><h4>${t('case.actions')}</h4><ul>${actions}</ul></div>
+        <div class="modal__block"><h4>${t('case.tools')}</h4><div class="modal__tools">${tools}</div></div>
+        <div class="modal__block"><h4>${t('case.results')}</h4><p>${c.results}</p></div>`;
       lastFocused = document.activeElement;
       modal.classList.add('is-open');
       modal.setAttribute('aria-hidden', 'false');
@@ -209,17 +267,16 @@
       if (!message.value.trim()) { message.classList.add('invalid'); ok = false; }
 
       if (!ok) {
-        note.textContent = 'Please complete all fields with a valid email.';
+        note.textContent = t('form.error');
         note.className = 'contact__form-note error';
         return;
       }
 
-      // No backend in this static build — open the user's mail client as a graceful fallback.
       const subject = encodeURIComponent(`Portfolio inquiry from ${name.value.trim()}`);
       const bodyText = encodeURIComponent(`${message.value.trim()}\n\n— ${name.value.trim()} (${email.value.trim()})`);
       window.location.href = `mailto:maslievads@gmail.com?subject=${subject}&body=${bodyText}`;
 
-      note.textContent = 'Thanks! Your email client is opening — I’ll reply shortly.';
+      note.textContent = t('form.success');
       note.className = 'contact__form-note success';
       form.reset();
     });
@@ -233,10 +290,7 @@
     let w, h, particles, raf;
     const COUNT = window.innerWidth < 768 ? 26 : 54;
 
-    function resize() {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-    }
+    function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
     function make() {
       particles = Array.from({ length: COUNT }, () => ({
         x: Math.random() * w, y: Math.random() * h,
@@ -250,20 +304,16 @@
         p.x += p.vx; p.y += p.vy;
         if (p.x < 0 || p.x > w) p.vx *= -1;
         if (p.y < 0 || p.y > h) p.vy *= -1;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(110, 231, 183, ${p.a})`;
-        ctx.fill();
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(110, 231, 183, ${p.a})`; ctx.fill();
       });
-      // connecting lines
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const a = particles[i], b = particles[j];
           const dx = a.x - b.x, dy = a.y - b.y;
           const dist = Math.hypot(dx, dy);
           if (dist < 120) {
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
             ctx.strokeStyle = `rgba(110, 231, 183, ${0.06 * (1 - dist / 120)})`;
             ctx.lineWidth = 1; ctx.stroke();
           }
@@ -273,18 +323,13 @@
     }
     function start() { resize(); make(); cancelAnimationFrame(raf); draw(); }
     window.addEventListener('resize', () => { resize(); make(); });
-    // pause when tab hidden to save CPU
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) cancelAnimationFrame(raf); else draw();
-    });
+    document.addEventListener('visibilitychange', () => { if (document.hidden) cancelAnimationFrame(raf); else draw(); });
     start();
   }
 
-  /* ---------- Footer year ---------- */
-  // (kept static per spec: © 2026)
-
   /* ---------- Init ---------- */
   function init() {
+    applyStaticText();
     renderSkills();
     renderStats();
     renderCases();
@@ -293,6 +338,7 @@
     initNavScroll();
     initMobileMenu();
     initActiveNav();
+    initLangSwitcher();
     initModal();
     initForm();
     initParticles();

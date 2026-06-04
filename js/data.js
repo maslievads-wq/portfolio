@@ -1,6 +1,6 @@
 /* ============================================================
-   Content data — skills, stats, cases
-   Keeping content separate keeps markup clean and easy to edit.
+   Language-independent data — icons, numeric metrics, tools.
+   All translatable strings live in js/i18n.js (I18N).
    ============================================================ */
 
 // Inline SVG icons (stroke-based, inherit currentColor)
@@ -17,145 +17,23 @@ const ICONS = {
   ai: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="7" width="14" height="11" rx="2"/><path d="M12 7V4"/><circle cx="12" cy="3" r="1"/><path d="M2 12h3M19 12h3"/><circle cx="9.5" cy="12.5" r="1"/><circle cx="14.5" cy="12.5" r="1"/></svg>'
 };
 
-const SKILLS = [
-  { icon: 'strategy',    title: 'Marketing Strategy',      desc: 'Developing scalable marketing systems aligned with business goals.' },
-  { icon: 'performance', title: 'Performance Marketing',   desc: 'Managing paid acquisition channels with measurable ROI.' },
-  { icon: 'growth',      title: 'Growth Marketing',        desc: 'Building sustainable customer acquisition frameworks.' },
-  { icon: 'analytics',   title: 'Analytics & Dashboards',  desc: 'Creating transparent reporting and decision-making systems.' },
-  { icon: 'team',        title: 'Team Management',         desc: 'Coordinating marketing teams, contractors and stakeholders.' },
-  { icon: 'product',     title: 'Product Marketing',       desc: 'Positioning products and translating value into market demand.' },
-  { icon: 'gtm',         title: 'Go-To-Market Strategy',   desc: 'Launching products and entering new markets.' },
-  { icon: 'lead',        title: 'Lead Generation',         desc: 'Building predictable lead acquisition systems.' },
-  { icon: 'crm',         title: 'CRM & Funnels',           desc: 'Optimizing customer journeys and conversion processes.' },
-  { icon: 'ai',          title: 'AI Automation',           desc: 'Integrating AI tools and automation into marketing workflows.' }
+// Skill icons in display order (titles + descriptions come from I18N)
+const SKILL_ICONS = ['strategy', 'performance', 'growth', 'analytics', 'team', 'product', 'gtm', 'lead', 'crm', 'ai'];
+
+// Stats: numeric ones animate from STAT_META; text ones take their value from I18N
+const STAT_META = [
+  { value: 6,   suffix: '+' },
+  { value: 100, suffix: '+' },
+  { text: true },
+  { text: true }
 ];
 
-const STATS = [
-  { value: 6,   suffix: '+',  label: 'Years — Entrepreneurial & Marketing Experience' },
-  { value: 100, suffix: '+',  label: 'Projects — Campaigns, Products & Initiatives' },
-  { text: 'Multiple', label: 'Industries — Digital, Education, E-commerce, Tech' },
-  { text: 'Full Funnel', label: 'Strategy → Acquisition → Analytics → Growth' }
-];
-
-const CASES = [
-  {
-    tag: 'Marketing Agency Growth',
-    title: 'Scaling a Digital Marketing Agency',
-    desc: 'Rebuilt the agency’s acquisition and delivery systems to enable predictable, profitable growth.',
-    industry: 'Digital Services',
-    challenge: 'The agency relied on referrals and inconsistent outreach. Lead flow was unpredictable, margins were unclear, and there was no reporting layer to guide decisions.',
-    actions: [
-      'Built a structured outbound + inbound acquisition system',
-      'Implemented a CRM with stage-based pipeline tracking',
-      'Standardized offers, pricing and delivery processes',
-      'Introduced weekly performance dashboards for leadership'
-    ],
-    tools: ['HubSpot', 'Notion', 'Google Analytics', 'Looker Studio', 'Make'],
-    metrics: [
-      { value: 180, suffix: '%', label: 'Revenue Growth' },
-      { value: 3,   suffix: 'x', label: 'Lead Growth' },
-      { value: 34,  suffix: '%', label: 'CAC Reduction' }
-    ],
-    results: 'Within two quarters the agency moved from unpredictable referral income to a documented, repeatable pipeline — tripling qualified leads while cutting acquisition costs by a third.'
-  },
-  {
-    tag: 'Recruitment Marketing',
-    title: 'Recruitment Marketing System',
-    desc: 'Designed an employer-brand and candidate-acquisition funnel for a fast-hiring company.',
-    industry: 'HR / Staffing',
-    challenge: 'Hiring depended on expensive job boards with low-quality applicants and no measurable funnel.',
-    actions: [
-      'Built a candidate landing funnel with clear messaging',
-      'Launched targeted paid campaigns across social channels',
-      'Automated screening and follow-up sequences',
-      'Created a recruiting analytics dashboard'
-    ],
-    tools: ['Meta Ads', 'Tilda', 'Airtable', 'Zapier', 'GA4'],
-    metrics: [
-      { value: 4,  suffix: 'x', label: 'Qualified Applicants' },
-      { value: 42, suffix: '%', label: 'Cost per Hire ↓' },
-      { value: 2.6, suffix: 'x', label: 'Conversion Rate' }
-    ],
-    results: 'Cost per qualified hire dropped 42% while application quality and volume rose sharply, giving the team a predictable hiring pipeline.'
-  },
-  {
-    tag: 'Education Projects',
-    title: 'EdTech Launch & Enrollment Growth',
-    desc: 'Took an online education product from concept to consistent monthly enrollments.',
-    industry: 'Education',
-    challenge: 'A new course offering had no audience, funnel or acquisition channel — only strong content.',
-    actions: [
-      'Defined positioning and a value-driven offer',
-      'Built a webinar-to-sales acquisition funnel',
-      'Launched performance campaigns with tight tracking',
-      'Implemented email nurture and re-engagement flows'
-    ],
-    tools: ['GetCourse', 'Google Ads', 'Meta Ads', 'Email Automation'],
-    metrics: [
-      { value: 320, suffix: '%', label: 'Enrollment Growth' },
-      { value: 4.8, suffix: 'x', label: 'ROAS' },
-      { value: 28, suffix: '%', label: 'Funnel Conversion' }
-    ],
-    results: 'The product reached stable, scalable monthly enrollments with a positive return on ad spend and a repeatable launch playbook.'
-  },
-  {
-    tag: 'Performance Marketing',
-    title: 'E-commerce Performance Scaling',
-    desc: 'Restructured paid acquisition to scale revenue while holding profitability targets.',
-    industry: 'E-commerce',
-    challenge: 'Ad spend was scaling but ROAS was falling and the team lacked visibility into true profitability.',
-    actions: [
-      'Rebuilt campaign structure around product margins',
-      'Implemented full-funnel tracking and attribution',
-      'Introduced creative testing framework',
-      'Optimized landing pages and checkout flow'
-    ],
-    tools: ['Meta Ads', 'Google Ads', 'Shopify', 'GA4', 'Triple Whale'],
-    metrics: [
-      { value: 2.4, suffix: 'x', label: 'ROAS Improvement' },
-      { value: 56, suffix: '%', label: 'Revenue Growth' },
-      { value: 22, suffix: '%', label: 'CR Increase' }
-    ],
-    results: 'Profitable ad spend more than doubled in efficiency, unlocking confident scaling backed by clear margin-based reporting.'
-  },
-  {
-    tag: 'Lead Generation Systems',
-    title: 'B2B Lead Generation Engine',
-    desc: 'Built a predictable, multi-channel B2B lead system for a service business.',
-    industry: 'B2B Services',
-    challenge: 'Sales had no consistent inbound flow and spent most of their time prospecting manually.',
-    actions: [
-      'Designed an inbound content + lead-magnet system',
-      'Built outbound sequences with enriched targeting',
-      'Connected forms, CRM and routing automation',
-      'Created an SLA-based lead scoring model'
-    ],
-    tools: ['HubSpot', 'Apollo', 'LinkedIn', 'Make', 'Looker Studio'],
-    metrics: [
-      { value: 5,  suffix: 'x', label: 'Monthly Leads' },
-      { value: 38, suffix: '%', label: 'Sales Time Saved' },
-      { value: 31, suffix: '%', label: 'Lead-to-Deal ↑' }
-    ],
-    results: 'Sales shifted from manual prospecting to working a steady, qualified pipeline — improving both lead volume and close rates.'
-  },
-  {
-    tag: 'AI Automation Projects',
-    title: 'AI-Powered Marketing Operations',
-    desc: 'Embedded AI and automation across content, reporting and lead handling.',
-    industry: 'Technology',
-    challenge: 'Repetitive marketing tasks consumed team capacity and slowed reporting and response times.',
-    actions: [
-      'Automated reporting aggregation across channels',
-      'Deployed AI content and creative assist workflows',
-      'Built AI-assisted lead qualification and routing',
-      'Created internal automation playbooks'
-    ],
-    tools: ['OpenAI API', 'Make', 'n8n', 'Notion', 'Slack'],
-    metrics: [
-      { value: 60, suffix: '%', label: 'Manual Work ↓' },
-      { value: 3,  suffix: 'x', label: 'Reporting Speed' },
-      { value: 45, suffix: '%', label: 'Faster Response' }
-    ],
-    results: 'Automation freed significant team capacity and accelerated decision-making, turning routine operations into a scalable, low-overhead system.'
-  }
+// Case metrics (numbers) and tools are language-independent; text comes from I18N
+const CASE_META = [
+  { metrics: [{ value: 180, suffix: '%' }, { value: 3, suffix: 'x' }, { value: 34, suffix: '%' }], tools: ['HubSpot', 'Notion', 'Google Analytics', 'Looker Studio', 'Make'] },
+  { metrics: [{ value: 4, suffix: 'x' }, { value: 42, suffix: '%' }, { value: 2.6, suffix: 'x' }], tools: ['Meta Ads', 'Tilda', 'Airtable', 'Zapier', 'GA4'] },
+  { metrics: [{ value: 320, suffix: '%' }, { value: 4.8, suffix: 'x' }, { value: 28, suffix: '%' }], tools: ['GetCourse', 'Google Ads', 'Meta Ads', 'Email Automation'] },
+  { metrics: [{ value: 2.4, suffix: 'x' }, { value: 56, suffix: '%' }, { value: 22, suffix: '%' }], tools: ['Meta Ads', 'Google Ads', 'Shopify', 'GA4', 'Triple Whale'] },
+  { metrics: [{ value: 5, suffix: 'x' }, { value: 38, suffix: '%' }, { value: 31, suffix: '%' }], tools: ['HubSpot', 'Apollo', 'LinkedIn', 'Make', 'Looker Studio'] },
+  { metrics: [{ value: 60, suffix: '%' }, { value: 3, suffix: 'x' }, { value: 45, suffix: '%' }], tools: ['OpenAI API', 'Make', 'n8n', 'Notion', 'Slack'] }
 ];

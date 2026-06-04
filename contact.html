@@ -38,17 +38,25 @@
         <span class="nav__brand-text">Dmitry Masliev</span>
       </a>
 
-      <nav class="nav__links" id="navLinks" aria-label="Primary">
-        <a href="index.html" class="nav__link">Home</a>
-        <a href="skills.html" class="nav__link">Skills</a>
-        <a href="about.html" class="nav__link">About</a>
-        <a href="cases.html" class="nav__link">Cases</a>
-        <a href="contact.html" class="nav__link nav__link--cta">Contact</a>
-      </nav>
+      <div class="nav__right">
+        <nav class="nav__links" id="navLinks" aria-label="Primary">
+          <a href="index.html" class="nav__link" data-i18n="nav.home">Home</a>
+          <a href="skills.html" class="nav__link" data-i18n="nav.skills">Skills</a>
+          <a href="about.html" class="nav__link" data-i18n="nav.about">About</a>
+          <a href="cases.html" class="nav__link" data-i18n="nav.cases">Cases</a>
+          <a href="contact.html" class="nav__link nav__link--cta" data-i18n="nav.contact">Contact</a>
+        </nav>
 
-      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
-        <span></span><span></span><span></span>
-      </button>
+        <div class="lang" role="group" aria-label="Language">
+          <button class="lang__btn" type="button" data-lang="en">EN</button>
+          <button class="lang__btn" type="button" data-lang="de">DE</button>
+          <button class="lang__btn" type="button" data-lang="ru">RU</button>
+        </div>
+
+        <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -57,9 +65,9 @@
     <section class="contact section section--page" id="contact">
       <div class="container contact__inner">
         <div class="contact__intro reveal">
-          <span class="eyebrow">Get In Touch</span>
-          <h1 class="section__title">Let's Work Together</h1>
-          <p class="section__lead">
+          <span class="eyebrow" data-i18n="contact.eyebrow">Get In Touch</span>
+          <h1 class="section__title" data-i18n="contact.title">Let's Work Together</h1>
+          <p class="section__lead" data-i18n="contact.lead">
             Whether you are looking for a marketing leader, growth consultant or strategic
             partner, feel free to get in touch.
           </p>
@@ -85,8 +93,8 @@
             </li>
             <li>
               <span class="contact__links-static">
-                <span class="contact__links-label">Location</span>
-                <span class="contact__links-val">Germany</span>
+                <span class="contact__links-label" data-i18n="contact.locationLabel">Location</span>
+                <span class="contact__links-val" data-i18n="contact.locationVal">Germany</span>
               </span>
             </li>
           </ul>
@@ -94,18 +102,18 @@
 
         <form class="contact__form reveal" id="contactForm" style="--reveal-delay: 120ms" novalidate>
           <div class="field">
-            <label for="name">Name</label>
+            <label for="name" data-i18n="form.name">Name</label>
             <input type="text" id="name" name="name" autocomplete="name" required />
           </div>
           <div class="field">
-            <label for="email">Email</label>
+            <label for="email" data-i18n="form.email">Email</label>
             <input type="email" id="email" name="email" autocomplete="email" required />
           </div>
           <div class="field">
-            <label for="message">Message</label>
+            <label for="message" data-i18n="form.message">Message</label>
             <textarea id="message" name="message" rows="5" required></textarea>
           </div>
-          <button type="submit" class="btn btn--primary btn--block">Send Message</button>
+          <button type="submit" class="btn btn--primary btn--block" data-i18n="form.send">Send Message</button>
           <p class="contact__form-note" id="formNote" role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -117,25 +125,26 @@
     <div class="container footer__inner">
       <div class="footer__brand">
         <span class="nav__brand-mark">DM</span>
-        <p>Building marketing systems that drive measurable business growth.</p>
+        <p data-i18n="footer.statement">Building marketing systems that drive measurable business growth.</p>
       </div>
 
       <nav class="footer__nav" aria-label="Footer">
-        <a href="index.html">Home</a>
-        <a href="skills.html">Skills</a>
-        <a href="about.html">About</a>
-        <a href="cases.html">Cases</a>
-        <a href="contact.html">Contact</a>
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <a href="skills.html" data-i18n="nav.skills">Skills</a>
+        <a href="about.html" data-i18n="nav.about">About</a>
+        <a href="cases.html" data-i18n="nav.cases">Cases</a>
+        <a href="contact.html" data-i18n="nav.contact">Contact</a>
         <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="https://t.me/" target="_blank" rel="noopener noreferrer">Telegram</a>
       </nav>
     </div>
     <div class="container footer__bottom">
-      <p>© 2026 Dmitry Masliev. All Rights Reserved.</p>
-      <a href="#" class="footer__top" aria-label="Back to top">Back to top ↑</a>
+      <p data-i18n="footer.copyright">© 2026 Dmitry Masliev. All Rights Reserved.</p>
+      <a href="#" class="footer__top" data-i18n="footer.backToTop" aria-label="Back to top">Back to top ↑</a>
     </div>
   </footer>
 
+  <script src="js/i18n.js"></script>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>

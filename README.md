@@ -7,6 +7,7 @@ Positioned for B2B marketing-consulting clients and CMO / Marketing Director / G
 
 ## ✨ Highlights
 
+- **Multilingual** — English, German and Russian, switchable from the fixed header; choice persists across pages (localStorage)
 - **Premium dark, minimal aesthetic** inspired by modern portfolio sites (e.g. The Digital Panda)
 - **Fully responsive**, desktop-first, mobile optimized
 - **Smooth, performant animations** — scroll reveals, animated counters, animated gradient + particle background, hover interactions, floating elements
@@ -25,8 +26,9 @@ portfolio/
 ├── contact.html        # Contact form + links
 ├── css/styles.css      # Design system + all styles (shared)
 ├── js/
-│   ├── data.js         # Content: skills, stats, cases, icons
-│   └── main.js         # Interactivity (reveals, counters, modal, form, particles)
+│   ├── i18n.js         # Translations (en / de / ru): UI strings, skills, stats, cases
+│   ├── data.js         # Language-independent data: icons, metric numbers, tools
+│   └── main.js         # Interactivity + i18n engine (reveals, counters, modal, form, particles)
 ├── assets/             # SVG portrait placeholder + favicon
 ├── robots.txt
 ├── sitemap.xml
@@ -69,7 +71,8 @@ python3 -m http.server 8000
 
 ## ✏️ Editing content
 
-- **Skills / stats / cases:** edit `js/data.js`
+- **Text in any language (skills, stats, cases, UI):** edit `js/i18n.js` (`en` / `de` / `ru`)
+- **Metric numbers, tools, icons (shared across languages):** edit `js/data.js`
 - **Copy & layout:** edit `index.html`
 - **Styling & theme tokens:** edit the `:root` variables in `css/styles.css`
 - **Portrait:** replace `assets/portrait.svg` with a real photo (update the `<img>` `src` in `index.html`)
