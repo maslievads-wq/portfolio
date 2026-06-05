@@ -553,6 +553,12 @@ ul { list-style: none; }
 .case-page__chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0; }
 .case-page__summary { font-size: clamp(1.1rem, 2vw, 1.3rem); color: var(--text-primary); max-width: 68ch; font-weight: 500; }
 .case-page__what { margin-top: 44px; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 18px; }
+.case-page__body { max-width: 76ch; }
+.case-page__h { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; letter-spacing: -0.01em; margin: 48px 0 18px; }
+.case-page__sub { font-size: 1.15rem; font-weight: 700; color: var(--accent); margin: 30px 0 12px; }
+.case-page__p { color: var(--text-secondary); font-size: 1.04rem; margin-bottom: 14px; }
+.case-page__body .case-page__bullets { margin-bottom: 18px; }
+.case-page__body .case-page__chips { margin: 6px 0 18px; }
 .case-page__bullets { display: flex; flex-direction: column; gap: 16px; max-width: 74ch; }
 .case-page__bullets li { position: relative; padding-left: 30px; color: var(--text-secondary); font-size: 1.04rem; }
 .case-page__bullets li::before { content: '→'; position: absolute; left: 0; top: 1px; color: var(--accent); font-weight: 700; }

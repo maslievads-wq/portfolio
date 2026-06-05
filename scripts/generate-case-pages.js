@@ -19,6 +19,22 @@ const slugs = ctx.CASE_SLUGS;
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const escAttr = s => esc(s).replace(/"/g, '&quot;');
 
+// Build the case body: rich `blocks` if present, else the simple bullet list.
+const whatDone = ctx.I18N.ru.ui['case.whatDone'];
+function caseBody(c) {
+  if (Array.isArray(c.blocks)) {
+    return c.blocks.map(b => {
+      if (b.h) return `<h2 class="case-page__h">${esc(b.h)}</h2>`;
+      if (b.sub) return `<h3 class="case-page__sub">${esc(b.sub)}</h3>`;
+      if (b.p) return `<p class="case-page__p">${esc(b.p)}</p>`;
+      if (b.ul) return `<ul class="case-page__bullets">${b.ul.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`;
+      if (b.tags) return `<div class="case-page__chips">${b.tags.map(x => `<span class="case-card__chip">${esc(x)}</span>`).join('')}</div>`;
+      return '';
+    }).join('\n          ');
+  }
+  return `<h2 class="case-page__what">${esc(whatDone)}</h2>\n          <ul class="case-page__bullets">${(c.bullets || []).map(b => `<li>${esc(b)}</li>`).join('')}</ul>`;
+}
+
 const nav = `
   <header class="nav" id="nav">
     <div class="container nav__inner">
@@ -73,7 +89,6 @@ cases.forEach((c, i) => {
   const slug = slugs[i];
   const next = slugs[(i + 1) % slugs.length];
   const chips = (c.highlights || []).map(h => `<span class="case-card__chip">${esc(h)}</span>`).join('\n            ');
-  const bullets = (c.bullets || []).map(b => `<li>${esc(b)}</li>`).join('\n            ');
   const wa = 'https://wa.me/491622134731?text=' +
     encodeURIComponent('Hi Dmitry, I saw your case "' + c.title + '" and would like to connect.');
   const jsonld = JSON.stringify({
@@ -137,10 +152,9 @@ ${nav}
 
           <p class="case-page__summary" data-case-field="summary">${esc(c.summary)}</p>
 
-          <h2 class="case-page__what" data-i18n="case.whatDone">What I did and how</h2>
-          <ul class="case-page__bullets" data-case-field="bullets">
-            ${bullets}
-          </ul>
+          <div class="case-page__body" data-case-field="body">
+          ${caseBody(c)}
+          </div>
 
           <div class="case-page__actions">
             <a class="btn btn--whatsapp" href="${escAttr(wa)}" target="_blank" rel="noopener noreferrer" data-case-field="contactLink" aria-label="Contact me on WhatsApp">

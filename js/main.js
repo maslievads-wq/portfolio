@@ -89,6 +89,21 @@
   }
 
   /* ---------- Case page (own URL, SEO) ---------- */
+  // Build the case body HTML: rich `blocks` if present, else a bullet list.
+  function caseBodyHTML(c) {
+    if (Array.isArray(c.blocks)) {
+      return c.blocks.map(b => {
+        if (b.h) return `<h2 class="case-page__h">${b.h}</h2>`;
+        if (b.sub) return `<h3 class="case-page__sub">${b.sub}</h3>`;
+        if (b.p) return `<p class="case-page__p">${b.p}</p>`;
+        if (b.ul) return `<ul class="case-page__bullets">${b.ul.map(x => `<li>${x}</li>`).join('')}</ul>`;
+        if (b.tags) return `<div class="case-page__chips">${b.tags.map(x => `<span class="case-card__chip">${x}</span>`).join('')}</div>`;
+        return '';
+      }).join('');
+    }
+    return `<h2 class="case-page__what">${t('case.whatDone')}</h2><ul class="case-page__bullets">${(c.bullets || []).map(b => `<li>${b}</li>`).join('')}</ul>`;
+  }
+
   function renderCasePage() {
     const root = document.querySelector('[data-case-index]');
     if (!root) return;
@@ -101,8 +116,8 @@
     setText('summary', c.summary || '');
     const chips = root.querySelector('[data-case-field="chips"]');
     if (chips) chips.innerHTML = (c.highlights || []).map(h => `<span class="case-card__chip">${h}</span>`).join('');
-    const bullets = root.querySelector('[data-case-field="bullets"]');
-    if (bullets) bullets.innerHTML = (c.bullets || []).map(b => `<li>${b}</li>`).join('');
+    const body = root.querySelector('[data-case-field="body"]');
+    if (body) body.innerHTML = caseBodyHTML(c);
     const contact = root.querySelector('[data-case-field="contactLink"]');
     if (contact) contact.href = 'https://wa.me/491622134731?text=' +
       encodeURIComponent('Hi Dmitry, I saw your case "' + (c.title || '') + '" and would like to connect.');
