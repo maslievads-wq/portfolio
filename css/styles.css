@@ -241,6 +241,35 @@ ul { list-style: none; }
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
 }
 .hero__subtitle { margin-top: 28px; font-size: clamp(1.05rem, 1.6vw, 1.3rem); color: var(--text-primary); max-width: 560px; font-weight: 500; }
+/* Flowing gradient on accent title text + highlighted phrases */
+.hero__title-accent, .hl { background-size: 220% auto; animation: gradFlow 6s linear infinite; }
+@keyframes gradFlow { to { background-position: 220% center; } }
+
+/* "Fully AI-developed" badge with rotating gradient border */
+.ai-badge {
+  position: fixed; right: 18px; bottom: 18px; z-index: 60;
+  display: inline-flex; border-radius: 100px; padding: 1.5px; overflow: hidden;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45);
+}
+.ai-badge::before {
+  content: ''; position: absolute; inset: -60%;
+  background: conic-gradient(from 0deg, transparent 0deg, var(--accent) 60deg, var(--accent-alt) 140deg, transparent 220deg);
+  animation: aiSpin 4.5s linear infinite;
+}
+.ai-badge__inner {
+  position: relative; display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 15px; border-radius: 100px; background: rgba(14, 14, 14, 0.92);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.02em; color: var(--text-primary);
+}
+.ai-badge__spark { color: var(--accent); font-size: 0.9rem; animation: aiSpark 2.2s ease-in-out infinite; }
+@keyframes aiSpin { to { transform: rotate(360deg); } }
+@keyframes aiSpark { 0%, 100% { opacity: 0.6; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1.18); } }
+@media (max-width: 560px) {
+  .ai-badge { right: 12px; bottom: 12px; }
+  .ai-badge__inner { padding: 7px 12px; font-size: 0.72rem; }
+}
+
 /* "Open to opportunities" + roles list */
 .hero__open { margin-top: 30px; }
 .hero__open-label {
