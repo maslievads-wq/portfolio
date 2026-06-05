@@ -241,6 +241,23 @@ ul { list-style: none; }
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
 }
 .hero__subtitle { margin-top: 28px; font-size: clamp(1.05rem, 1.6vw, 1.3rem); color: var(--text-primary); max-width: 560px; font-weight: 500; }
+/* "Open to opportunities" + roles list */
+.hero__open { margin-top: 30px; }
+.hero__open-label {
+  display: inline-block; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 16px;
+}
+.hero__roles { display: flex; flex-direction: column; gap: 11px; }
+.hero__roles li {
+  display: flex; align-items: center; gap: 13px;
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem); font-weight: 600; color: var(--text-primary); letter-spacing: -0.01em;
+}
+.hero__roles li::before {
+  content: ''; flex-shrink: 0; width: 9px; height: 9px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-alt));
+  box-shadow: 0 0 0 4px rgba(110, 231, 183, 0.12);
+}
+
 .hero__cta { margin-top: 36px; display: flex; gap: 16px; flex-wrap: wrap; }
 
 /* Certification badges (hero) */
