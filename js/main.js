@@ -20,11 +20,25 @@
   // wins, so the switcher works. Restore browser auto-detect before launch.
   const DEFAULT_LANG = 'ru';
   function detectLang() {
+    // Localized static pages (e.g. case-...-en.html) declare their language
+    // explicitly — it wins and is persisted so the rest of the site follows.
+    const localized = document.querySelector('[data-page-lang]');
+    const pageLang = localized && localized.getAttribute('data-page-lang');
+    if (pageLang && LANGS.includes(pageLang)) {
+      try { localStorage.setItem('lang', pageLang); } catch (e) { /* ignore */ }
+      return pageLang;
+    }
     try {
       const saved = localStorage.getItem('lang');
       if (saved && LANGS.includes(saved)) return saved;
     } catch (e) { /* ignore */ }
     return DEFAULT_LANG;
+  }
+  // Language-aware case URL (ru keeps base slug; en/de get a suffix).
+  function caseSlug(i, lang) {
+    const base = (typeof CASE_SLUGS !== 'undefined' && CASE_SLUGS[i]) || '#';
+    if (base === '#' || lang === 'ru') return base;
+    return base.replace('.html', '-' + lang + '.html');
   }
   let currentLang = detectLang();
   const pack = () => I18N[currentLang] || I18N.en;
@@ -76,7 +90,7 @@
     const limit = grid.dataset.limit ? parseInt(grid.dataset.limit, 10) : items.length;
     grid.innerHTML = items.slice(0, limit).map((c, i) => {
       const chips = (c.highlights || []).slice(0, 3).map(h => `<span class="case-card__chip">${h}</span>`).join('');
-      const href = (typeof CASE_SLUGS !== 'undefined' && CASE_SLUGS[i]) || '#';
+      const href = caseSlug(i, currentLang);
       return `
         <a class="case-card reveal" style="--reveal-delay:${(i % 3) * 70}ms" href="${href}">
           <span class="case-card__tag">${c.tag || ''}</span>
@@ -307,7 +321,16 @@
     updateLangSwitcher();
   }
   function initLangSwitcher() {
-    $$('.lang__btn').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+    // On localized case pages, switching language navigates to that
+    // language's URL; elsewhere it re-renders in place.
+    const localized = document.querySelector('[data-page-lang]');
+    $$('.lang__btn').forEach(b => b.addEventListener('click', () => {
+      if (localized) {
+        const alt = localized.getAttribute('data-alt-' + b.dataset.lang);
+        if (alt) { window.location.href = alt; return; }
+      }
+      setLang(b.dataset.lang);
+    }));
     updateLangSwitcher();
   }
 
