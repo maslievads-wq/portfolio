@@ -80,7 +80,7 @@
       return `
         <a class="case-card reveal" style="--reveal-delay:${(i % 3) * 70}ms" href="${href}">
           <span class="case-card__tag">${c.tag || ''}</span>
-          <h3 class="case-card__title">${c.title || ''}</h3>
+          <h3 class="case-card__title">${titleHTML(c)}</h3>
           <p class="case-card__desc">${c.summary || ''}</p>
           <div class="case-card__chips">${chips}</div>
           <span class="case-card__open">${t('case.viewStudy')}</span>
@@ -89,6 +89,14 @@
   }
 
   /* ---------- Case page (own URL, SEO) ---------- */
+  // Title with an optional highlighted phrase (accent gradient).
+  function titleHTML(c) {
+    if (c.titleAccent && c.title.indexOf(c.titleAccent) !== -1) {
+      return c.title.replace(c.titleAccent, `<span class="hl">${c.titleAccent}</span>`);
+    }
+    return c.title || '';
+  }
+
   // Build the case body HTML: rich `blocks` if present, else a bullet list.
   function caseBodyHTML(c) {
     if (Array.isArray(c.blocks)) {
@@ -98,6 +106,7 @@
         if (b.p) return `<p class="case-page__p">${b.p}</p>`;
         if (b.ul) return `<ul class="case-page__bullets">${b.ul.map(x => `<li>${x}</li>`).join('')}</ul>`;
         if (b.tags) return `<div class="case-page__chips">${b.tags.map(x => `<span class="case-card__chip">${x}</span>`).join('')}</div>`;
+        if (b.metrics) return `<div class="case-metrics">${b.metrics.map(m => `<div class="case-metric"><strong>${m.value}</strong><span>${m.label}</span></div>`).join('')}</div>`;
         return '';
       }).join('');
     }
@@ -112,7 +121,8 @@
     if (!c) return;
     const setText = (field, val) => { const el = root.querySelector(`[data-case-field="${field}"]`); if (el) el.textContent = val; };
     setText('tag', c.tag || '');
-    setText('title', c.title || '');
+    const titleEl = root.querySelector('[data-case-field="title"]');
+    if (titleEl) titleEl.innerHTML = titleHTML(c);
     setText('summary', c.summary || '');
     const chips = root.querySelector('[data-case-field="chips"]');
     if (chips) chips.innerHTML = (c.highlights || []).map(h => `<span class="case-card__chip">${h}</span>`).join('');

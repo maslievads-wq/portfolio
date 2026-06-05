@@ -553,6 +553,26 @@ ul { list-style: none; }
 .case-page__chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0; }
 .case-page__summary { font-size: clamp(1.1rem, 2vw, 1.3rem); color: var(--text-primary); max-width: 68ch; font-weight: 500; }
 .case-page__what { margin-top: 44px; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 18px; }
+/* Highlighted phrase inside a title (cards + case page) */
+.hl {
+  background: linear-gradient(110deg, var(--accent), var(--accent-alt));
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+/* Big-number result cards */
+.case-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin: 8px 0 26px; }
+.case-metric {
+  padding: 26px 24px; border-radius: var(--radius); background: var(--bg-secondary);
+  border: 1px solid var(--border); transition: border-color 0.3s, transform 0.3s;
+}
+.case-metric:hover { border-color: rgba(110, 231, 183, 0.4); transform: translateY(-4px); }
+.case-metric strong {
+  display: block; font-size: clamp(1.9rem, 4.5vw, 2.8rem); font-weight: 800; line-height: 1; letter-spacing: -0.02em;
+  background: linear-gradient(110deg, var(--accent), var(--accent-alt));
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.case-metric span { display: block; margin-top: 10px; font-size: 0.86rem; color: var(--text-secondary); }
+
 .case-page__body { max-width: 76ch; }
 .case-page__h { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; letter-spacing: -0.01em; margin: 48px 0 18px; }
 .case-page__sub { font-size: 1.15rem; font-weight: 700; color: var(--accent); margin: 30px 0 12px; }

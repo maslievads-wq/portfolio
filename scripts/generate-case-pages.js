@@ -19,6 +19,15 @@ const slugs = ctx.CASE_SLUGS;
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const escAttr = s => esc(s).replace(/"/g, '&quot;');
 
+// Title with an optional highlighted phrase.
+function titleHtml(c) {
+  const full = esc(c.title);
+  if (c.titleAccent && c.title.indexOf(c.titleAccent) !== -1) {
+    return full.replace(esc(c.titleAccent), `<span class="hl">${esc(c.titleAccent)}</span>`);
+  }
+  return full;
+}
+
 // Build the case body: rich `blocks` if present, else the simple bullet list.
 const whatDone = ctx.I18N.ru.ui['case.whatDone'];
 function caseBody(c) {
@@ -29,6 +38,7 @@ function caseBody(c) {
       if (b.p) return `<p class="case-page__p">${esc(b.p)}</p>`;
       if (b.ul) return `<ul class="case-page__bullets">${b.ul.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`;
       if (b.tags) return `<div class="case-page__chips">${b.tags.map(x => `<span class="case-card__chip">${esc(x)}</span>`).join('')}</div>`;
+      if (b.metrics) return `<div class="case-metrics">${b.metrics.map(m => `<div class="case-metric"><strong>${esc(m.value)}</strong><span>${esc(m.label)}</span></div>`).join('')}</div>`;
       return '';
     }).join('\n          ');
   }
@@ -144,7 +154,7 @@ ${nav}
           <a class="case-page__back" href="cases.html" data-i18n="case.backToCases">← All cases</a>
 
           <span class="case-page__tag" data-case-field="tag">${esc(c.tag)}</span>
-          <h1 class="case-page__title" data-case-field="title">${esc(c.title)}</h1>
+          <h1 class="case-page__title" data-case-field="title">${titleHtml(c)}</h1>
 
           <div class="case-page__chips" data-case-field="chips">
             ${chips}
