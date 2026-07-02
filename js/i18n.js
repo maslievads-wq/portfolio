@@ -440,6 +440,29 @@ const I18N = {
         { h: 'Результаты' },
         { metrics: [{ value: '3 000 000+', label: 'охват аудитории в месяц' }, { value: '100%+', label: 'ROE по B2B-направлению' }, { value: '5', label: 'международных рынков' }, { value: '15+', label: 'тестов контент- и UGC-гипотез' }] },
         { ul: ['Более 3 000 000 совокупного охвата аудитории в месяц.', 'Более 10 000 подписчиков привлечено в первые два месяца после запуска.', 'Построена работающая B2B-система привлечения клиентов.', 'Достигнут ROE более 100% по B2B-направлению.', 'Создан и выведен на рынок новый бренд мобильных аксессуаров.', 'Проведено более 15 тестов контентных и UGC-гипотез.', 'Организована масштабируемая система работы с инфлюенсерами и пользовательским контентом.', 'Продукт успешно выведен на международный рынок и представлен в 5 странах.'] }
+      ] },
+      { tag: 'Meta Ads · Mobile App Installs · UA', title: 'Запуск Xenna: CPI $0.90 на Tier 1 странах', titleAccent: 'CPI $0.90', summary: 'Тестовый запуск мобильной игры Xenna в Meta Ads на Tier 1 рынках (US/UK/Canada): проверил первый этап воронки и нашёл связку с CPI $0.90.', highlights: ['CPI $0.90', 'Tier 1: US/UK/CA', 'Meta Ads', 'Mobile app installs'], blocks: [
+        { h: 'Задача' },
+        { p: 'Перед масштабированием нужно было проверить, насколько воронка привлечения работает на дорогих Tier 1 рынках. Главная цель теста — не сразу выйти на максимальный объём установок, а проверить первый этап воронки: креатив → клик → переход в стор → установка приложения.' },
+        { p: 'Нужно было понять:' },
+        { ul: ['есть ли отклик аудитории на игру;', 'какие креативные подходы дают установки дешевле;', 'какая реальная стоимость CPI на Tier 1 странах;', 'можно ли использовать Meta Ads как основной канал первичного привлечения;', 'какие связки стоит оставлять для дальнейшего масштабирования.'] },
+        { h: 'Исходная ситуация' },
+        { p: 'Проект находился на этапе тестового запуска. До масштабирования было важно не сливать бюджет в широкие кампании, а быстро проверить разные гипотезы.' },
+        { p: 'Особенность задачи — Tier 1 страны (США, Великобритания, Канада) обычно дают более дорогой трафик. Поэтому вопрос был не просто в том, можно ли получить установки, а в том, какая минимальная стоимость установки достижима при нормальном качестве трафика.' },
+        { h: 'Что сделали' },
+        { p: 'На первом этапе запустил серию тестовых кампаний в Meta Ads с оптимизацией под Mobile App Installs. Тестировал разные подходы:' },
+        { ul: ['Reels-креативы;', 'Post-креативы;', 'UGC-подачу;', 'gameplay-видео;', 'статичные объявления;', 'разные хуки в первом экране;', 'отдельные кампании под UK, US и Canada;', 'общую Tier 1 кампанию.'] },
+        { p: 'Логика простая: не пытаться «угадать» один идеальный креатив, а быстро собрать данные по нескольким гипотезам и оставить только те связки, которые дают установку дешевле остальных.' },
+        { h: 'Что показал тест' },
+        { p: 'Главный вывод: воронка первого этапа работает. Пользователи из Tier 1 стран реагируют на игру, переходят в стор и устанавливают приложение. Стоимость установки удалось удержать на уровне $0.90–$0.92 на лучших связках.' },
+        { p: 'Это хороший результат для тестового запуска: Tier 1 рынки обычно дороже, а игра ещё не была на стадии полноценного масштабирования с большим объёмом обученных данных.' },
+        { sub: 'Какие гипотезы сработали лучше' },
+        { ul: ['Reels-креативы — самый низкий CPI $0.90: короткий вертикальный формат быстрее захватывал внимание и лучше подходил под мобильное потребление;', 'Простая демонстрация геймплея — механика игры понятна сразу, без долгого разбирательства;', 'Победившая связка вынесена в отдельную кампанию XENNA — T1 — WINNER, где CPI сохранился на уровне $0.92 при большем объёме установок.'] },
+        { h: 'Инструменты' },
+        { tags: ['Meta Ads', 'Mobile App Installs', 'Creative Testing', 'UGC', 'Reels', 'A/B-тесты', 'Performance Marketing', 'User Acquisition'] },
+        { h: 'Результаты' },
+        { metrics: [{ value: '$0.90', label: 'CPI на Tier 1 (лучшая связка)' }, { value: 'Tier 1', label: 'US · UK · Canada' }, { value: 'Reels', label: 'формат с самым низким CPI' }] },
+        { ul: ['Протестированы десятки подходов и креативов.', 'Проверен спрос на игру в UK / US / Canada.', 'Определены рабочие форматы объявлений.', 'Найдена связка с CPI $0.90.', 'Подтверждено, что воронка установки приложения работает.', 'Подготовлена основа для следующего этапа масштабирования.', 'Ключевой результат: стоимость установки на Tier 1 — $0.90 CPI, переход от хаотичного тестирования к масштабированию победивших связок.'] }
       ] }
     ],
     experience: [
@@ -633,6 +656,29 @@ I18N.en.cases = [
     { h: "Results" },
     { metrics: [{ value: "3M+", label: "monthly audience reach" }, { value: "100%+", label: "B2B ROE" }, { value: "5", label: "international markets" }, { value: "15+", label: "content/UGC hypothesis tests" }] },
     { ul: ["3,000,000+ total monthly audience reach.", "10,000+ followers gained in the first two months after launch.", "A working B2B client-acquisition system built.", "100%+ ROE achieved on the B2B direction.", "A new mobile-accessory brand created and brought to market.", "15+ content and UGC hypotheses tested.", "A scalable system for influencers and UGC organized.", "The product successfully entered international markets and is present in 5 countries."] }
+  ] },
+  { tag: "Meta Ads · Mobile App Installs · UA", title: "Xenna launch: $0.90 CPI on Tier 1 countries", titleAccent: "$0.90 CPI", summary: "Test launch of the mobile game Xenna on Meta Ads across Tier 1 markets (US/UK/Canada): validated the first funnel stage and found a combo with $0.90 CPI.", highlights: ["$0.90 CPI", "Tier 1: US/UK/CA", "Meta Ads", "Mobile app installs"], blocks: [
+    { h: "Objective" },
+    { p: "Before scaling, I needed to check how well the acquisition funnel works on expensive Tier 1 markets. The goal of the test was not to reach maximum installs right away, but to validate the first funnel stage: creative → click → store visit → app install." },
+    { p: "I needed to understand:" },
+    { ul: ["whether the audience responds to the game;", "which creative approaches deliver cheaper installs;", "the real CPI on Tier 1 countries;", "whether Meta Ads can be the main primary-acquisition channel;", "which combos to keep for further scaling."] },
+    { h: "Starting point" },
+    { p: "The project was at the test-launch stage. Before scaling it was important not to burn budget on broad campaigns, but to quickly validate different hypotheses." },
+    { p: "The nuance — Tier 1 countries (US, UK, Canada) usually deliver more expensive traffic. So the question wasn't just whether installs are possible, but what the minimum install cost is at a normal traffic quality." },
+    { h: "What was done" },
+    { p: "In the first stage I launched a series of test campaigns in Meta Ads optimized for Mobile App Installs. I tested different approaches:" },
+    { ul: ["Reels creatives;", "Post creatives;", "UGC format;", "gameplay videos;", "static ads;", "different first-screen hooks;", "separate campaigns for UK, US and Canada;", "a combined Tier 1 campaign."] },
+    { p: "The logic was simple: not to guess one perfect creative, but to quickly gather data across several hypotheses and keep only the combos that deliver installs cheaper than the rest." },
+    { h: "What the test showed" },
+    { p: "The key takeaway: the first funnel stage works. Users from Tier 1 countries respond to the game, go to the store and install the app. Install cost was held at $0.90–$0.92 on the best combos." },
+    { p: "That's a good result for a test launch: Tier 1 markets are usually more expensive, and the game was not yet at full scale with large volumes of trained data." },
+    { sub: "Which hypotheses worked best" },
+    { ul: ["Reels creatives — the lowest CPI, $0.90: the short vertical format grabbed attention faster and fit mobile consumption better;", "Simple gameplay demonstration — the mechanics were clear immediately, no need to figure out what's advertised;", "The winning combo was moved to a dedicated campaign XENNA — T1 — WINNER, where CPI stayed at $0.92 at a larger install volume."] },
+    { h: "Tools" },
+    { tags: ["Meta Ads", "Mobile App Installs", "Creative Testing", "UGC", "Reels", "A/B Testing", "Performance Marketing", "User Acquisition"] },
+    { h: "Results" },
+    { metrics: [{ value: "$0.90", label: "CPI on Tier 1 (best combo)" }, { value: "Tier 1", label: "US · UK · Canada" }, { value: "Reels", label: "lowest-CPI format" }] },
+    { ul: ["Dozens of approaches and creatives tested.", "Demand for the game validated in UK / US / Canada.", "Working ad formats identified.", "A combo with $0.90 CPI found.", "Confirmed that the app-install funnel works.", "Foundation prepared for the next scaling stage.", "Key result: install cost on Tier 1 — $0.90 CPI, moving from chaotic testing to scaling the winning combos."] }
   ] }
 ];
 I18N.en.experience = [
@@ -809,6 +855,29 @@ I18N.de.cases = [
     { h: "Ergebnisse" },
     { metrics: [{ value: "3 Mio.+", label: "Reichweite pro Monat" }, { value: "100%+", label: "B2B-ROE" }, { value: "5", label: "internationale Märkte" }, { value: "15+", label: "Content-/UGC-Tests" }] },
     { ul: ["Über 3.000.000 Gesamtreichweite pro Monat.", "Über 10.000 Follower in den ersten zwei Monaten nach dem Launch.", "Ein funktionierendes B2B-Kundengewinnungssystem aufgebaut.", "ROE von über 100% im B2B-Bereich erreicht.", "Eine neue Mobilzubehör-Marke geschaffen und auf den Markt gebracht.", "15+ Content- und UGC-Hypothesen getestet.", "Ein skalierbares System für Influencer und UGC organisiert.", "Das Produkt erfolgreich international eingeführt und in 5 Ländern präsent."] }
+  ] },
+  { tag: "Meta Ads · Mobile App Installs · UA", title: "Xenna-Launch: $0,90 CPI in Tier-1-Ländern", titleAccent: "$0,90 CPI", summary: "Test-Launch des Mobile-Games Xenna in Meta Ads auf Tier-1-Märkten (US/UK/Kanada): die erste Funnel-Stufe validiert und eine Kombination mit $0,90 CPI gefunden.", highlights: ["$0,90 CPI", "Tier 1: US/UK/CA", "Meta Ads", "Mobile App Installs"], blocks: [
+    { h: "Aufgabe" },
+    { p: "Vor der Skalierung musste geprüft werden, wie gut der Akquise-Funnel auf teuren Tier-1-Märkten funktioniert. Ziel des Tests war nicht sofort das maximale Install-Volumen, sondern die Validierung der ersten Funnel-Stufe: Creative → Klick → Store-Besuch → App-Install." },
+    { p: "Zu klären war:" },
+    { ul: ["ob die Zielgruppe auf das Spiel reagiert;", "welche Creative-Ansätze günstigere Installs liefern;", "der reale CPI in Tier-1-Ländern;", "ob Meta Ads der Hauptkanal der Primärakquise sein kann;", "welche Kombinationen für die weitere Skalierung bleiben sollten."] },
+    { h: "Ausgangslage" },
+    { p: "Das Projekt war in der Test-Launch-Phase. Vor der Skalierung war es wichtig, kein Budget in breite Kampagnen zu verbrennen, sondern schnell verschiedene Hypothesen zu prüfen." },
+    { p: "Die Besonderheit — Tier-1-Länder (USA, Großbritannien, Kanada) liefern in der Regel teureren Traffic. Die Frage war also nicht nur, ob Installs möglich sind, sondern welcher minimale Install-Preis bei normaler Traffic-Qualität erreichbar ist." },
+    { h: "Was umgesetzt wurde" },
+    { p: "In der ersten Phase startete ich eine Reihe von Testkampagnen in Meta Ads, optimiert auf Mobile App Installs. Getestete Ansätze:" },
+    { ul: ["Reels-Creatives;", "Post-Creatives;", "UGC-Format;", "Gameplay-Videos;", "statische Anzeigen;", "verschiedene Hooks im ersten Screen;", "separate Kampagnen für UK, US und Kanada;", "eine kombinierte Tier-1-Kampagne."] },
+    { p: "Die Logik war einfach: nicht das eine perfekte Creative erraten, sondern schnell Daten über mehrere Hypothesen sammeln und nur die Kombinationen behalten, die günstiger installieren als der Rest." },
+    { h: "Was der Test zeigte" },
+    { p: "Kernergebnis: Die erste Funnel-Stufe funktioniert. Nutzer aus Tier-1-Ländern reagieren auf das Spiel, gehen in den Store und installieren die App. Der Install-Preis wurde bei den besten Kombinationen auf $0,90–$0,92 gehalten." },
+    { p: "Für einen Test-Launch ein gutes Ergebnis: Tier-1-Märkte sind meist teurer, und das Spiel war noch nicht in der vollen Skalierung mit großen Mengen trainierter Daten." },
+    { sub: "Welche Hypothesen am besten funktionierten" },
+    { ul: ["Reels-Creatives — der niedrigste CPI, $0,90: das kurze vertikale Format fesselte schneller die Aufmerksamkeit und passte besser zum mobilen Konsum;", "Einfache Gameplay-Demonstration — die Spielmechanik war sofort verständlich;", "Die Gewinner-Kombination wurde in eine eigene Kampagne XENNA — T1 — WINNER ausgelagert, wo der CPI bei $0,92 bei größerem Install-Volumen blieb."] },
+    { h: "Tools" },
+    { tags: ["Meta Ads", "Mobile App Installs", "Creative Testing", "UGC", "Reels", "A/B-Testing", "Performance Marketing", "User Acquisition"] },
+    { h: "Ergebnisse" },
+    { metrics: [{ value: "$0,90", label: "CPI auf Tier 1 (beste Kombi)" }, { value: "Tier 1", label: "US · UK · Kanada" }, { value: "Reels", label: "Format mit niedrigstem CPI" }] },
+    { ul: ["Dutzende Ansätze und Creatives getestet.", "Nachfrage nach dem Spiel in UK / US / Kanada validiert.", "Funktionierende Anzeigenformate identifiziert.", "Eine Kombination mit $0,90 CPI gefunden.", "Bestätigt, dass der App-Install-Funnel funktioniert.", "Grundlage für die nächste Skalierungsphase geschaffen.", "Kernergebnis: Install-Preis auf Tier 1 — $0,90 CPI, Übergang vom chaotischen Testen zur Skalierung der Gewinner-Kombinationen."] }
   ] }
 ];
 I18N.de.experience = [
