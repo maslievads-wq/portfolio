@@ -41,6 +41,7 @@
     return base.replace('.html', '-' + lang + '.html');
   }
   let currentLang = detectLang();
+  let booted = false; // true once the initial render is done
   const pack = () => I18N[currentLang] || I18N.en;
   const t = key => (pack().ui[key] != null ? pack().ui[key] : (I18N.en.ui[key] != null ? I18N.en.ui[key] : key));
 
@@ -83,16 +84,47 @@
   }
 
   /* ---------- Render cases ---------- */
+  let activeCat = 'complex';
+  const catOf = i => (typeof CASE_CATS !== 'undefined' && CASE_CATS[i]) || 'complex';
+
   function renderCases() {
     const grid = $('#casesGrid');
     if (!grid) return;
     const items = pack().cases;
+    const filtersEl = $('#caseFilters');
+
+    // Build the category filter bar once (Cases page only); keep it in sync.
+    if (filtersEl && typeof CATEGORIES !== 'undefined') {
+      if (!filtersEl.dataset.ready) {
+        filtersEl.innerHTML = CATEGORIES.map(c => `<button class="case-filter" type="button" data-cat="${c}"></button>`).join('');
+        filtersEl.dataset.ready = '1';
+        filtersEl.addEventListener('click', e => {
+          const b = e.target.closest('[data-cat]');
+          if (b) { activeCat = b.dataset.cat; renderCases(); }
+        });
+      }
+      $$('.case-filter', filtersEl).forEach(b => {
+        b.textContent = t('cat.' + b.dataset.cat);
+        b.classList.toggle('is-active', b.dataset.cat === activeCat);
+      });
+    }
+
     const limit = grid.dataset.limit ? parseInt(grid.dataset.limit, 10) : items.length;
-    grid.innerHTML = items.slice(0, limit).map((c, i) => {
+    let idxs = items.map((_, i) => i);
+    if (filtersEl) idxs = idxs.filter(i => catOf(i) === activeCat);
+    idxs = idxs.slice(0, limit);
+
+    if (filtersEl && idxs.length === 0) {
+      grid.innerHTML = `<p class="cases-empty">${t('cases.soon')}</p>`;
+      return;
+    }
+
+    grid.innerHTML = idxs.map((i, n) => {
+      const c = items[i];
       const chips = (c.highlights || []).slice(0, 3).map(h => `<span class="case-card__chip">${h}</span>`).join('');
       const href = caseSlug(i, currentLang);
       return `
-        <a class="case-card reveal" style="--reveal-delay:${(i % 3) * 70}ms" href="${href}">
+        <a class="case-card reveal" style="--reveal-delay:${(n % 3) * 70}ms" href="${href}">
           <span class="case-card__tag">${c.tag || ''}</span>
           <h3 class="case-card__title">${titleHTML(c)}</h3>
           <p class="case-card__desc">${c.summary || ''}</p>
@@ -100,6 +132,9 @@
           <span class="case-card__open">${t('case.viewStudy')}</span>
         </a>`;
     }).join('');
+
+    // Re-rendered after the initial load (filter/lang change) — reveal at once.
+    if (booted) $$('.reveal', grid).forEach(el => el.classList.add('is-visible'));
   }
 
   /* ---------- Case page (own URL, SEO) ---------- */
@@ -433,6 +468,7 @@
     initLangSwitcher();
     initForm();
     initParticles();
+    booted = true;
   }
 
   if (document.readyState === 'loading') {

@@ -30,6 +30,11 @@ const CASE_SLUGS = [
   'case-glazur-brand.html'
 ];
 
+// Case sub-categories (shown as filters on the Cases page) and the category
+// of each case, parallel to CASE_SLUGS. Labels come from I18N (cat.*).
+const CATEGORIES = ['complex', 'google', 'meta'];
+const CASE_CATS = ['complex', 'complex', 'complex', 'complex', 'complex'];
+
 // Stats: numeric ones animate from STAT_META; text ones take their value from I18N
 const STAT_META = [
   { value: 7,   suffix: '+' },
