@@ -46,6 +46,7 @@ function caseBody(c, lang) {
       if (b.ul) return `<ul class="case-page__bullets">${b.ul.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`;
       if (b.tags) return `<div class="case-page__chips">${b.tags.map(x => `<span class="case-card__chip">${esc(x)}</span>`).join('')}</div>`;
       if (b.metrics) return `<div class="case-metrics">${b.metrics.map(m => `<div class="case-metric"><strong>${esc(m.value)}</strong><span>${esc(m.label)}</span></div>`).join('')}</div>`;
+      if (b.img) return `<figure class="case-figure"><img src="${escAttr(b.img)}" alt="${escAttr(b.alt || '')}" loading="lazy" />${b.caption ? `<figcaption>${esc(b.caption)}</figcaption>` : ''}</figure>`;
       return '';
     }).join('\n          ');
   }

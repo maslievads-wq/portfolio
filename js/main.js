@@ -156,6 +156,7 @@
         if (b.ul) return `<ul class="case-page__bullets">${b.ul.map(x => `<li>${x}</li>`).join('')}</ul>`;
         if (b.tags) return `<div class="case-page__chips">${b.tags.map(x => `<span class="case-card__chip">${x}</span>`).join('')}</div>`;
         if (b.metrics) return `<div class="case-metrics">${b.metrics.map(m => `<div class="case-metric"><strong>${m.value}</strong><span>${m.label}</span></div>`).join('')}</div>`;
+        if (b.img) return `<figure class="case-figure"><img src="${b.img}" alt="${b.alt || ''}" loading="lazy" />${b.caption ? `<figcaption>${b.caption}</figcaption>` : ''}</figure>`;
         return '';
       }).join('');
     }

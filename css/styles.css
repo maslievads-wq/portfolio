@@ -601,6 +601,14 @@ ul { list-style: none; }
 }
 .case-metric span { display: block; margin-top: 10px; font-size: 0.86rem; color: var(--text-secondary); }
 
+/* Screenshot / figure inside a case */
+.case-figure { margin: 26px 0 30px; }
+.case-figure img {
+  width: 100%; height: auto; border-radius: var(--radius);
+  border: 1px solid var(--border); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+.case-figure figcaption { margin-top: 12px; font-size: 0.86rem; color: var(--text-secondary); }
+
 .case-page__body { max-width: 76ch; }
 .case-page__h { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; letter-spacing: -0.01em; margin: 48px 0 18px; }
 .case-page__sub { font-size: 1.15rem; font-weight: 700; color: var(--accent); margin: 30px 0 12px; }
