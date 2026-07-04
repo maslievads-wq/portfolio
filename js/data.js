@@ -29,13 +29,14 @@ const CASE_SLUGS = [
   'case-remboard-saas.html',
   'case-glazur-brand.html',
   'case-xenna-meta-cpi.html',
-  'case-hr-agency-leadgen.html'
+  'case-hr-agency-leadgen.html',
+  'case-magsafe-ecom.html'
 ];
 
 // Case sub-categories (shown as filters on the Cases page) and the category
 // of each case, parallel to CASE_SLUGS. Labels come from I18N (cat.*).
 const CATEGORIES = ['complex', 'google', 'meta'];
-const CASE_CATS = ['complex', 'complex', 'complex', 'complex', 'complex', 'meta', 'meta'];
+const CASE_CATS = ['complex', 'complex', 'complex', 'complex', 'complex', 'meta', 'meta', 'meta'];
 
 // Stats: numeric ones animate from STAT_META; text ones take their value from I18N
 const STAT_META = [
