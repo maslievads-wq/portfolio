@@ -100,6 +100,7 @@ const footer = `
     </div>
     <div class="container footer__bottom">
       <p data-i18n="footer.copyright">© 2026 Dmitry Masliev. All Rights Reserved.</p>
+      <nav class="footer__legal" aria-label="Legal"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></nav>
       <a href="#" class="footer__top" data-i18n="footer.backToTop" aria-label="Back to top">Back to top ↑</a>
     </div>
   </footer>`;
@@ -145,11 +146,6 @@ slugs.forEach((_, i) => {
   <link rel="canonical" href="${SITE}${slug}" />
 ${alternates}
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
   <link rel="stylesheet" href="css/styles.css" />
 
   <script type="application/ld+json">

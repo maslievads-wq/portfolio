@@ -78,7 +78,11 @@ const I18N = {
       'form.success': 'Thanks! Your email client is opening — I’ll reply shortly.',
       'footer.statement': 'Building marketing systems that drive measurable business growth.',
       'footer.copyright': '© 2026 Dmitry Masliev. All Rights Reserved.',
-      'footer.backToTop': 'Back to top ↑'
+      'footer.backToTop': 'Back to top ↑',
+      'cookie.text': 'We use only technically necessary local storage (language, consent). No tracking cookies.',
+      'cookie.more': 'Learn more',
+      'cookie.accept': 'Accept',
+      'cookie.decline': 'Essential only'
     },
     skills: [
       { t: 'Marketing Strategy', d: 'Developing scalable marketing systems aligned with business goals.' },
@@ -179,7 +183,11 @@ const I18N = {
       'form.success': 'Danke! Ihr E-Mail-Programm öffnet sich – ich melde mich in Kürze.',
       'footer.statement': 'Ich baue Marketingsysteme, die messbares Geschäftswachstum fördern.',
       'footer.copyright': '© 2026 Dmitry Masliev. Alle Rechte vorbehalten.',
-      'footer.backToTop': 'Nach oben ↑'
+      'footer.backToTop': 'Nach oben ↑',
+      'cookie.text': 'Wir verwenden nur technisch notwendigen lokalen Speicher (Sprache, Einwilligung). Keine Tracking-Cookies.',
+      'cookie.more': 'Mehr erfahren',
+      'cookie.accept': 'Akzeptieren',
+      'cookie.decline': 'Nur notwendige'
     },
     skills: [
       { t: 'Marketingstrategie', d: 'Aufbau skalierbarer Marketingsysteme im Einklang mit den Unternehmenszielen.' },
@@ -280,7 +288,11 @@ const I18N = {
       'form.success': 'Спасибо! Открывается ваш почтовый клиент — я скоро отвечу.',
       'footer.statement': 'Строю маркетинговые системы, которые обеспечивают измеримый рост бизнеса.',
       'footer.copyright': '© 2026 Dmitry Masliev. Все права защищены.',
-      'footer.backToTop': 'Наверх ↑'
+      'footer.backToTop': 'Наверх ↑',
+      'cookie.text': 'Мы используем только технически необходимое локальное хранилище (язык, согласие). Трекинг-куки не используются.',
+      'cookie.more': 'Подробнее',
+      'cookie.accept': 'Принять',
+      'cookie.decline': 'Только необходимые'
     },
     skills: [
       { t: 'Маркетинговая стратегия', d: 'Создание масштабируемых маркетинговых систем в соответствии с целями бизнеса.' },

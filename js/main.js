@@ -449,6 +449,32 @@
     start();
   }
 
+  /* ---------- Cookie / privacy notice ---------- */
+  function initCookieBanner() {
+    let consent = null;
+    try { consent = localStorage.getItem('cookieConsent'); } catch (e) { /* ignore */ }
+    if (consent) return;
+    const el = document.createElement('div');
+    el.className = 'cookie-banner';
+    el.setAttribute('role', 'dialog');
+    el.setAttribute('aria-label', 'Cookie notice');
+    el.innerHTML =
+      `<p class="cookie-banner__text">${t('cookie.text')} <a href="datenschutz.html">${t('cookie.more')}</a></p>` +
+      `<div class="cookie-banner__actions">` +
+        `<button type="button" class="btn btn--secondary cookie-banner__btn" data-consent="essential">${t('cookie.decline')}</button>` +
+        `<button type="button" class="btn btn--primary cookie-banner__btn" data-consent="accepted">${t('cookie.accept')}</button>` +
+      `</div>`;
+    document.body.appendChild(el);
+    requestAnimationFrame(() => el.classList.add('is-visible'));
+    el.addEventListener('click', e => {
+      const b = e.target.closest('[data-consent]');
+      if (!b) return;
+      try { localStorage.setItem('cookieConsent', b.dataset.consent); } catch (e) { /* ignore */ }
+      el.classList.remove('is-visible');
+      setTimeout(() => el.remove(), 300);
+    });
+  }
+
   /* ---------- Init ---------- */
   function init() {
     applyStaticText();
@@ -469,6 +495,7 @@
     initLangSwitcher();
     initForm();
     initParticles();
+    initCookieBanner();
     booted = true;
   }
 
