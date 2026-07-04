@@ -253,12 +253,12 @@ ul { list-style: none; }
   align-items: center; width: 100%;
 }
 .hero__title {
-  font-size: clamp(2.6rem, 6.4vw, 5rem);
-  font-weight: 900; line-height: 1.02; letter-spacing: -0.03em; text-transform: uppercase;
+  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  font-weight: 800; line-height: 1.08; letter-spacing: -0.02em;
 }
 .hero__title-accent {
-  display: block; margin-top: 8px; text-transform: none; font-weight: 700;
-  font-size: clamp(1.5rem, 3.4vw, 2.6rem); letter-spacing: -0.02em;
+  display: block; margin-top: 12px; text-transform: none; font-weight: 700;
+  font-size: clamp(1.4rem, 3vw, 2.3rem); letter-spacing: -0.02em;
   background: linear-gradient(110deg, var(--accent), var(--accent-alt));
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
 }
