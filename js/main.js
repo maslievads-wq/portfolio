@@ -84,7 +84,15 @@
   }
 
   /* ---------- Render cases ---------- */
-  let activeCat = 'complex';
+  // Selected category persists across pages (home preview -> Cases page).
+  function storedCat() {
+    try {
+      const c = sessionStorage.getItem('caseCat');
+      if (c && typeof CATEGORIES !== 'undefined' && CATEGORIES.indexOf(c) !== -1) return c;
+    } catch (e) { /* ignore */ }
+    return 'complex';
+  }
+  let activeCat = storedCat();
   const catOf = i => (typeof CASE_CATS !== 'undefined' && CASE_CATS[i]) || 'complex';
 
   function renderCases() {
@@ -100,7 +108,11 @@
         filtersEl.dataset.ready = '1';
         filtersEl.addEventListener('click', e => {
           const b = e.target.closest('[data-cat]');
-          if (b) { activeCat = b.dataset.cat; renderCases(); }
+          if (b) {
+            activeCat = b.dataset.cat;
+            try { sessionStorage.setItem('caseCat', activeCat); } catch (err) { /* ignore */ }
+            renderCases();
+          }
         });
       }
       $$('.case-filter', filtersEl).forEach(b => {
