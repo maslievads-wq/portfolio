@@ -11,10 +11,10 @@ const I18N = {
   en: {
     ui: {
       'nav.home': 'Home', 'nav.skills': 'Skills', 'nav.about': 'About', 'nav.cases': 'Cases', 'nav.contact': 'Contact',
-      'hero.eyebrow': 'Strategic Marketing Leadership',
+      'hero.eyebrow': 'Dmitry Masliev',
       'hero.accent': 'with Entrepreneurial Experience',
       'hero.subtitle': 'Performance marketing, end-to-end analytics, sales funnels and scaling of acquisition channels.',
-      'hero.openTo': 'Open to opportunities',
+      'hero.openTo': 'Also open to positions',
       'hero.btnCases': 'View Cases',
       'hero.btnContact': 'Contact me',
       'hero.badge1': 'Years Experience',
@@ -116,10 +116,10 @@ const I18N = {
   de: {
     ui: {
       'nav.home': 'Start', 'nav.skills': 'Kompetenzen', 'nav.about': 'Über mich', 'nav.cases': 'Projekte', 'nav.contact': 'Kontakt',
-      'hero.eyebrow': 'Strategische Marketing-Führung',
+      'hero.eyebrow': 'Dmitry Masliev',
       'hero.accent': 'mit unternehmerischer Erfahrung',
       'hero.subtitle': 'Performance-Marketing, End-to-End-Analytics, Sales-Funnels und Skalierung der Werbekanäle.',
-      'hero.openTo': 'Offen für Angebote',
+      'hero.openTo': 'Auch offen für Positionen',
       'hero.btnCases': 'Projekte ansehen',
       'hero.btnContact': 'Kontakt',
       'hero.badge1': 'Jahre Erfahrung',
@@ -221,10 +221,10 @@ const I18N = {
   ru: {
     ui: {
       'nav.home': 'Главная', 'nav.skills': 'Навыки', 'nav.about': 'Обо мне', 'nav.cases': 'Кейсы', 'nav.contact': 'Контакты',
-      'hero.eyebrow': 'Стратегическое маркетинговое лидерство',
+      'hero.eyebrow': 'Маслиев Дмитрий',
       'hero.accent': 'с предпринимательским опытом',
       'hero.subtitle': 'Performance Marketing, сквозная аналитика, воронки продаж и масштабирование рекламных каналов.',
-      'hero.openTo': 'Рассматриваю предложения',
+      'hero.openTo': 'Также рассматриваю предложения на позиции',
       'hero.btnCases': 'Смотреть кейсы',
       'hero.btnContact': 'Связаться',
       'hero.badge1': 'лет опыта',
