@@ -605,7 +605,7 @@ const I18N = {
     ],
     experience: [
       {
-        role: 'CMO & Co-Founder', company: '4our — Digital-агентство полного цикла', period: 'фев 2021 — мар 2026',
+        role: 'Chief Product Officer / Head of Product', company: 'руководитель отдела продуктов', period: 'фев 2021 — мар 2026',
         meta: 'Удалённо · 9 человек в прямом подчинении + до 50 подрядчиков · E-commerce · EdTech · Retail',
         bullets: [
           'Разработал и реализовал стратегию захвата рынка среди авторизованных сервисных центров Apple — агентство вышло на позицию №1 в СНГ в нише АСЦ через комплексный подход: SEO, performance, контент, SMM.',
@@ -618,7 +618,7 @@ const I18N = {
         ]
       },
       {
-        role: 'Head of Marketing', company: 're.Cover — розничная сеть мобильной техники', period: 'апр 2019 — фев 2021',
+        role: 'Product Marketing Manager', company: 'онлайн-коммерция', period: 'апр 2019 — фев 2021',
         meta: 'Повышен за бизнес-результаты · Полная ответственность за маркетинг и P&L',
         bullets: [
           'Возглавил маркетинговое направление: выстроил brand strategy, сформировал команду, внедрил систему метрик и отчётности перед собственниками.',
@@ -946,7 +946,7 @@ I18N.en.cases = [
   ] }
 ];
 I18N.en.experience = [
-  { role: "CMO & Co-Founder", company: "4our — full-cycle digital agency", period: "Feb 2021 — Mar 2026", meta: "Remote · 9 direct reports + up to 50 contractors · E-commerce · EdTech · Retail", bullets: [
+  { role: "Chief Product Officer / Head of Product", company: "head of the product department", period: "Feb 2021 — Mar 2026", meta: "Remote · 9 direct reports + up to 50 contractors · E-commerce · EdTech · Retail", bullets: [
     "Developed and executed a market-capture strategy among Apple authorized service centers — the agency reached #1 in the CIS in the ASC niche through an integrated approach: SEO, performance, content, SMM.",
     "Built a marketing team from scratch: 12+ people (SEO, performance, content, SMM), set up processes and KPIs per direction — client NPS 90, average contract LTV 2+ years.",
     "Built an end-to-end analytics system: efficiency control for every ad channel, regular reporting on key metrics, continuous search for growth points and new traffic sources.",
@@ -955,7 +955,7 @@ I18N.en.experience = [
     "Executed a B2B go-to-market strategy for the SaaS service remboard.ru: launched CPA (affiliate) and performance channels, took the product to break-even in 3 months.",
     "Developed the concept of a new mobile-accessory brand «Глазурь — Стекло»: from naming and brand strategy to performance and influencer strategy with top market bloggers — 3,000,000+ monthly reach."
   ] },
-  { role: "Head of Marketing", company: "re.Cover — mobile-tech retail chain", period: "Apr 2019 — Feb 2021", meta: "Promoted for business results · Full responsibility for marketing and P&L", bullets: [
+  { role: "Product Marketing Manager", company: "online commerce", period: "Apr 2019 — Feb 2021", meta: "Promoted for business results · Full responsibility for marketing and P&L", bullets: [
     "Led the marketing function: built brand strategy, formed the team, implemented a metrics and reporting system for owners.",
     "Developed and launched a subscription model: client LTV +40%, lower CAC — a key revenue-growth initiative through changing product positioning.",
     "Launched a loyalty program: 15,000+ members, retention +12%; designed the mechanics, A/B-tested and iterated on data.",
@@ -1271,7 +1271,7 @@ I18N.de.cases = [
   ] }
 ];
 I18N.de.experience = [
-  { role: "CMO & Co-Founder", company: "4our — Full-Cycle-Digitalagentur", period: "Feb 2021 — März 2026", meta: "Remote · 9 direkt unterstellt + bis zu 50 Dienstleister · E-Commerce · EdTech · Retail", bullets: [
+  { role: "Chief Product Officer / Head of Product", company: "Leiter der Produktabteilung", period: "Feb 2021 — März 2026", meta: "Remote · 9 direkt unterstellt + bis zu 50 Dienstleister · E-Commerce · EdTech · Retail", bullets: [
     "Eine Markteroberungsstrategie für autorisierte Apple-Servicecenter entwickelt und umgesetzt — die Agentur erreichte Platz 1 in der GUS in der ASC-Nische über einen integrierten Ansatz: SEO, Performance, Content, SMM.",
     "Ein Marketingteam von Grund auf aufgebaut: 12+ Personen (SEO, Performance, Content, SMM), Prozesse und KPIs je Richtung eingerichtet — Kunden-NPS 90, durchschn. Vertrags-LTV 2+ Jahre.",
     "Ein End-to-End-Analytics-System aufgebaut: Effizienzkontrolle jedes Werbekanals, regelmäßiges Reporting der Kennzahlen, kontinuierliche Suche nach Wachstumspunkten und neuen Traffic-Quellen.",
@@ -1280,7 +1280,7 @@ I18N.de.experience = [
     "Eine B2B-Go-to-Market-Strategie für den SaaS-Dienst remboard.ru umgesetzt: CPA (Affiliate) und Performance-Kanäle gestartet, das Produkt in 3 Monaten auf Break-even geführt.",
     "Das Konzept einer neuen Mobilzubehör-Marke «Глазурь — Стекло» entwickelt: von Naming und Brand Strategy bis Performance- und Influencer-Strategie mit Top-Bloggern — 3.000.000+ Reichweite pro Monat."
   ] },
-  { role: "Head of Marketing", company: "re.Cover — Einzelhandelskette für Mobiltechnik", period: "Apr 2019 — Feb 2021", meta: "Für Geschäftsergebnisse befördert · Volle Verantwortung für Marketing und P&L", bullets: [
+  { role: "Product Marketing Manager", company: "Online-Commerce", period: "Apr 2019 — Feb 2021", meta: "Für Geschäftsergebnisse befördert · Volle Verantwortung für Marketing und P&L", bullets: [
     "Den Marketingbereich geleitet: Brand Strategy aufgebaut, Team formiert, ein Kennzahlen- und Reporting-System für die Eigentümer eingeführt.",
     "Ein Abo-Modell entwickelt und gestartet: Kunden-LTV +40%, niedrigere CAC — eine zentrale Revenue-Growth-Initiative durch geänderte Produktpositionierung.",
     "Ein Loyalty-Programm gestartet: 15.000+ Teilnehmer, Retention +12%; Mechanik designt, A/B-getestet und datenbasiert iteriert.",
